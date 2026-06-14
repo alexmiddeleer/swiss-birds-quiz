@@ -16,6 +16,21 @@
         "390x844"
       ],
       "enabled": true
+    },
+    "github": {
+      "type": "local",
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "pnpm",
+        "dlx",
+        "@modelcontextprotocol/server-github"
+      ],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "enabled": true
     }
   },
   "lsp": {
