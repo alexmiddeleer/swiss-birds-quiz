@@ -48,6 +48,10 @@ _Avoid_: Bulk search, folder scan
 A Swiss Bird without an approved image after an import attempt.
 _Avoid_: Failed bird, unsupported bird
 
+**Shipped Bird Image**:
+A Processed Bird Image included with the public app for offline learning.
+_Avoid_: Remote image, CDN image
+
 ## Relationships
 
 - A **Practice Session** asks about one or more **Swiss Birds**.
@@ -60,6 +64,7 @@ _Avoid_: Failed bird, unsupported bird
 - A **Bird Catalog** lists **Swiss Birds** and their **Processed Bird Images**.
 - A **Species Import List** can queue multiple **Swiss Birds** for Image Review.
 - A **Missing Bird** remains eligible for future image import attempts.
+- A **Shipped Bird Image** is available to Practice Sessions without network access.
 
 ## Example dialogue
 
@@ -101,6 +106,9 @@ _Avoid_: Failed bird, unsupported bird
 >
 > **Dev:** "What happens when no acceptable image is found for a **Swiss Bird**?"
 > **Domain expert:** "Record it as a **Missing Bird** so we can revisit it later."
+>
+> **Dev:** "Should Practice Sessions fetch bird images from Wikimedia at runtime?"
+> **Domain expert:** "No, use **Shipped Bird Images** so learning works offline."
 
 ## Flagged ambiguities
 
@@ -116,3 +124,4 @@ _Avoid_: Failed bird, unsupported bird
 - **Practice Sessions** use the **Bird Catalog**, not filesystem folder discovery.
 - Bulk imports should use a **Species Import List**, not implicit catalog or folder scanning.
 - Import attempts that do not produce an approved image record a **Missing Bird**.
+- **Shipped Bird Images** are committed app assets, not runtime Wikimedia requests.

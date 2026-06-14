@@ -1,3 +1,16 @@
 {
-  "birds": []
+  "birds": [
+    {
+      "scientificName": "Turdus merula",
+      "commonName": "Common blackbird",
+      "slug": "turdus-merula",
+      "images": [
+        {
+          "id": "commons-75068628-amselm-nnchen-der-unterart-t-m-azorensis-auf-ter",
+          "path": "/birds/turdus-merula/commons-75068628-amselm-nnchen-der-unterart-t-m-azorensis-auf-ter.webp",
+          "provenancePath": "/birds/turdus-merula/commons-75068628-amselm-nnchen-der-unterart-t-m-azorensis-auf-ter.json"
+        }
+      ]
+    }
+  ]
 }

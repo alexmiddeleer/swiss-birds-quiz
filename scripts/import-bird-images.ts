@@ -46,6 +46,7 @@ type ImportLog = {
 
 type SearchResult = {
   id: number;
+  pageid?: number;
   title: string;
 };
 
@@ -228,15 +229,29 @@ async function importSpeciesImage(
 }
 
 async function searchCommons(root: string, query: string, userAgent: string) {
-  const url = new URL("https://commons.wikimedia.org/w/rest.php/v1/search/media");
-  url.searchParams.set("q", query);
-  url.searchParams.set("type", "image");
-  url.searchParams.set("limit", "25");
+  const url = buildCommonsSearchUrl(query);
 
-  const response = await fetchJsonCached<{ pages?: SearchResult[] }>(root, url, userAgent);
-  return (response.pages ?? [])
+  const response = await fetchJsonCached<{ query?: { pages?: Record<string, SearchResult> } }>(
+    root,
+    url,
+    userAgent,
+  );
+  return Object.values(response.query?.pages ?? {})
+    .map((page) => ({ id: page.id ?? page.pageid ?? 0, title: page.title }))
     .filter((page) => page.id && page.title.startsWith("File:"))
     .sort((left, right) => left.title.localeCompare(right.title));
+}
+
+export function buildCommonsSearchUrl(query: string) {
+  const url = new URL("https://commons.wikimedia.org/w/api.php");
+  url.searchParams.set("action", "query");
+  url.searchParams.set("format", "json");
+  url.searchParams.set("generator", "search");
+  url.searchParams.set("gsrsearch", query);
+  url.searchParams.set("gsrnamespace", "6");
+  url.searchParams.set("gsrlimit", "25");
+  url.searchParams.set("prop", "info");
+  return url;
 }
 
 async function fetchCommonsMetadata(

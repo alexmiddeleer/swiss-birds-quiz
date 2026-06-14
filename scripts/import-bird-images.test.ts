@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   buildApiHeaders,
+  buildCommonsSearchUrl,
   buildUserAgent,
   parseArgs,
   requireWikimediaEmail,
@@ -40,6 +41,15 @@ describe("bird image import helpers", () => {
     expect(parseArgs(["--", "--species-file", "data/species.json"])).toEqual({
       "species-file": "data/species.json",
     });
+  });
+
+  it("uses Commons Action API for file search", () => {
+    const url = buildCommonsSearchUrl("Turdus merula");
+
+    expect(url.pathname).toBe("/w/api.php");
+    expect(url.searchParams.get("generator")).toBe("search");
+    expect(url.searchParams.get("gsrnamespace")).toBe("6");
+    expect(url.searchParams.get("gsrsearch")).toBe("Turdus merula");
   });
 
   it("records missing birds without duplicating entries", async () => {

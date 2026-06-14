@@ -31,6 +31,12 @@ mise exec -- pnpm test
 mise exec -- pnpm preview
 ```
 
+## Deployment
+
+This app deploys to GitHub Pages from `main` with GitHub Actions. The build uses Vite's `/swiss-birds-quiz/` base path for the repo Pages URL.
+
+Processed bird images and provenance JSON live under `public/birds/` and should be committed so the app can ship them as static offline-ready assets.
+
 ## Import bird images
 
 Bird images are imported from Wikimedia Commons with a human review step. The importer only accepts public domain images, stores processed WebP files under `public/birds/`, writes provenance JSON next to each image, and records species with no approved result in `data/missing-birds.json`.
