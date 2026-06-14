@@ -1,6 +1,6 @@
 # Swiss Birds Quiz
 
-Swiss Birds Quiz helps people learn to recognize common Swiss birds through short offline practice sessions.
+Swiss Birds Quiz helps people learn to recognize common Swiss birds through offline practice sessions.
 
 ## Language
 
@@ -9,8 +9,12 @@ A bird species commonly encountered in Switzerland, identified by scientific nam
 _Avoid_: Animal, wildlife, common-name-only bird
 
 **Practice Session**:
-A short attempt to recognize and memorize Swiss birds.
-_Avoid_: Exam, test
+An indefinite sequence of Quiz Rounds that continues until the learner explicitly ends it.
+_Avoid_: Exam, test, finite quiz
+
+**Quiz Round**:
+A complete pass through all Swiss Birds in the Bird Catalog in shuffled order. When a round ends, a new shuffled round begins automatically.
+_Avoid_: Game, level, set
 
 **Public Domain Bird Image**:
 A bird image that can be reused without copyright permission or attribution requirements.
@@ -58,7 +62,8 @@ _Avoid_: Remote image, CDN image
 
 ## Relationships
 
-- A **Practice Session** asks about one or more **Swiss Birds**.
+- A **Practice Session** is composed of one or more **Quiz Rounds**.
+- A **Quiz Round** presents every **Swiss Bird** in the **Bird Catalog** in shuffled order.
 - A **Swiss Bird** can have one or more **Approved Bird Images**.
 - A **Public Domain Bird Image** has **Image Provenance**.
 - An **Image Citation** is derived from **Image Provenance**.

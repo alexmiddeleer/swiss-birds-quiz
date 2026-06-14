@@ -21,11 +21,22 @@ type ImageProvenance = {
 };
 
 type LoadProvenance = (path: string) => Promise<ImageProvenance>;
+type Shuffle = <T>(arr: T[]) => T[];
+
+function defaultShuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 export function renderHomePage(
   root: HTMLElement,
   catalog: BirdCatalog = { birds: [] },
   loadProvenance: LoadProvenance = loadImageProvenance,
+  shuffle: Shuffle = defaultShuffle,
 ) {
   root.innerHTML = `
     <section class="hero" aria-labelledby="app-title">
@@ -36,7 +47,7 @@ export function renderHomePage(
   `;
 
   root.querySelector("button")?.addEventListener("click", async () => {
-    await renderQuiz(root, catalog, loadProvenance);
+    await renderQuiz(root, catalog, loadProvenance, shuffle);
   });
 }
 
@@ -44,8 +55,10 @@ async function renderQuiz(
   root: HTMLElement,
   catalog: BirdCatalog,
   loadProvenance: LoadProvenance,
+  shuffle: Shuffle,
 ) {
-  const bird = catalog.birds[0];
+  const queue = shuffle(catalog.birds);
+  const bird = queue[0];
   const image = bird?.images[0];
 
   if (!bird || !image) {
@@ -59,11 +72,40 @@ async function renderQuiz(
   }
 
   const provenance = await loadProvenance(image.provenancePath);
-  root.innerHTML = quizMarkup(bird, image, provenance, false);
 
-  root.querySelector(".quiz-card")?.addEventListener("click", () => {
-    root.innerHTML = quizMarkup(bird, image, provenance, true);
-  });
+  let roundQueue = queue.slice(1);
+
+  function renderCard(b: Bird, img: BirdImage, prov: ImageProvenance, revealed: boolean) {
+    root.innerHTML = quizMarkup(b, img, prov, revealed);
+    if (!revealed) {
+      root.querySelector(".quiz-card")?.addEventListener("click", () => {
+        root.innerHTML = quizMarkup(b, img, prov, true);
+        bindNextBird();
+      });
+    } else {
+      bindNextBird();
+    }
+    root.querySelector("[data-action='end-quiz']")?.addEventListener("click", () => {
+      renderHomePage(root, catalog, loadProvenance, shuffle);
+    });
+    root.querySelector("[data-action='refresh-app']")?.addEventListener("click", () => {
+      window.location.reload();
+    });
+  }
+
+  function bindNextBird() {
+    root.querySelector("[data-action='next-bird']")?.addEventListener("click", async () => {
+      if (roundQueue.length === 0) {
+        roundQueue = shuffle(catalog.birds);
+      }
+      const nextBird = roundQueue.shift()!;
+      const nextImage = nextBird.images[0];
+      const prov = await loadProvenance(nextImage.provenancePath);
+      renderCard(nextBird, nextImage, prov, false);
+    });
+  }
+
+  renderCard(bird, image, provenance, false);
 }
 
 function quizMarkup(
@@ -85,10 +127,15 @@ function quizMarkup(
       </figure>
       ${
         revealed
-          ? `<div class="answer"><h2>${escapeHtml(bird.commonName)}</h2><p><i>${escapeHtml(bird.scientificName)}</i></p></div>`
+          ? `<div class="answer"><h2>${escapeHtml(bird.commonName)}</h2><p><i>${escapeHtml(bird.scientificName)}</i></p></div>
+             <button type="button" data-action="next-bird">Next bird</button>`
           : `<p class="prompt">tap to show name</p>`
       }
     </section>
+    <div class="quiz-controls">
+      <button type="button" data-action="end-quiz">End quiz</button>
+      <button type="button" data-action="refresh-app">Refresh app</button>
+    </div>
   `;
 }
 
