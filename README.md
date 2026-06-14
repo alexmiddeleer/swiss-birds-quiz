@@ -27,5 +27,18 @@ mise exec -- pnpm install
 ```sh
 mise exec -- pnpm dev
 mise exec -- pnpm build
+mise exec -- pnpm test
 mise exec -- pnpm preview
 ```
+
+## Import bird images
+
+Bird images are imported from Wikimedia Commons with a human review step. The importer only accepts public domain images, stores processed WebP files under `public/birds/`, writes provenance JSON next to each image, and records species with no approved result in `data/missing-birds.json`.
+
+Create a species list like `data/species.example.json`, then run:
+
+```sh
+mise exec -- pnpm import:bird-images -- --species-file data/species.example.json
+```
+
+For each candidate, the importer opens the Wikimedia file page for source review, then opens the processed WebP for final quality review. Type `y` or `n` in the terminal after each review.
