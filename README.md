@@ -4,6 +4,8 @@ Swiss birds quiz is a simple, ad-hoc, offline-first progressive web app for memo
 
 It is designed for quick practice anywhere, including places without network access. The project is public-friendly: contributions are welcome if you want to improve the bird set, learning flow, offline behavior, or app polish.
 
+Live app: <https://alexmiddeleer.github.io/swiss-birds-quiz/>
+
 ## Goals
 
 - Help people recognize and memorize common Swiss birds.
