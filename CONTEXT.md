@@ -20,6 +20,10 @@ _Avoid_: Free image, Wikimedia image
 The recorded origin and rights evidence for a bird image.
 _Avoid_: Metadata, notes
 
+**Image Citation**:
+A visible source note for a bird image shown to learners.
+_Avoid_: Hidden provenance, footnote
+
 **Approved Bird Image**:
 A Public Domain Bird Image accepted by a human reviewer as suitable for learning a Swiss Bird.
 _Avoid_: Selected image, downloaded image
@@ -57,6 +61,7 @@ _Avoid_: Remote image, CDN image
 - A **Practice Session** asks about one or more **Swiss Birds**.
 - A **Swiss Bird** can have one or more **Approved Bird Images**.
 - A **Public Domain Bird Image** has **Image Provenance**.
+- An **Image Citation** is derived from **Image Provenance**.
 - An **Approved Bird Image** is a **Public Domain Bird Image**.
 - An **Image Review** can approve a **Public Domain Bird Image** as an **Approved Bird Image**.
 - A **Processed Bird Image** is produced from an **Approved Bird Image**.
@@ -76,6 +81,9 @@ _Avoid_: Remote image, CDN image
 >
 > **Dev:** "Do we keep **Image Provenance** if attribution is not required?"
 > **Domain expert:** "Yes, because we need an audit trail for legal and ethical reuse."
+>
+> **Dev:** "Should learners see where a **Shipped Bird Image** came from?"
+> **Domain expert:** "Yes, show an **Image Citation** with author, source, and rights info."
 >
 > **Dev:** "Can we identify a **Swiss Bird** by common name only?"
 > **Domain expert:** "No, use the scientific name as identity; common name can help search and display."
@@ -115,6 +123,7 @@ _Avoid_: Remote image, CDN image
 - "quiz" is project shorthand for **Practice Session**, not a formal graded exam.
 - "free image" is ambiguous because some free licenses require attribution; resolved term is **Public Domain Bird Image**.
 - "metadata" is too broad for legal/ethical tracking; resolved term is **Image Provenance**.
+- "citation" means a visible **Image Citation**, not only stored **Image Provenance**.
 - Common names can be ambiguous; **Swiss Bird** identity is scientific name.
 - Public domain status alone is not enough; quiz suitability requires human approval.
 - **Image Review** uses the source page context, not only the raw image.
