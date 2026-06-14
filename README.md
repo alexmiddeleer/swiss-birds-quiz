@@ -38,6 +38,12 @@ Bird images are imported from Wikimedia Commons with a human review step. The im
 Create a species list like `data/species.example.json`, then run:
 
 ```sh
+cp .env.example .env
+```
+
+Set `WIKIMEDIA_EMAIL` in `.env` to a real email address for Wikimedia API contact, then run:
+
+```sh
 mise exec -- pnpm import:bird-images -- --species-file data/species.example.json
 ```
 

@@ -73,6 +73,7 @@ type ProcessedImage = {
 
 const maxBytes = 100 * 1024;
 const maxLongEdge = 960;
+const commonsThumbnailWidth = 800;
 const publicDomainMarkers = ["public domain", "cc0", "pd-old", "pd-self", "pd-author", "pd-usgov"];
 
 export function scientificNameToSlug(scientificName: string) {
@@ -96,6 +97,27 @@ export async function upsertMissingBird(root: string, missingBird: MissingBird) 
   await writeJson(manifestPath, missingBirds);
 }
 
+export function buildApiHeaders(userAgent: string) {
+  return {
+    "Accept-Encoding": "gzip",
+    "User-Agent": userAgent,
+  };
+}
+
+export function buildUserAgent(email: string) {
+  return `SwissBirdsQuizBot/0.1 (${email})`;
+}
+
+export function requireWikimediaEmail(env: Record<string, string | undefined>) {
+  const email = env.WIKIMEDIA_EMAIL?.trim();
+
+  if (!email) {
+    throw new Error("Set WIKIMEDIA_EMAIL in .env before importing Wikimedia images.");
+  }
+
+  return email;
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const speciesFile = args["species-file"];
@@ -105,11 +127,9 @@ async function main() {
   }
 
   const root = process.cwd();
+  const env = { ...process.env, ...(await readEnvFile(join(root, ".env"))) };
   const speciesList = await readJson<Species[]>(join(root, speciesFile), []);
-  const userAgent =
-    args["user-agent"] ??
-    process.env.WIKIMEDIA_USER_AGENT ??
-    "SwissBirdsQuiz/0.1 (local development; contact via repository)";
+  const userAgent = buildUserAgent(requireWikimediaEmail(env));
   const rl = createInterface({ input, output });
   const summary = { imported: 0, skipped: 0, missing: 0 };
 
@@ -230,7 +250,7 @@ async function fetchCommonsMetadata(
   url.searchParams.set("prop", "imageinfo");
   url.searchParams.set("pageids", String(candidate.id));
   url.searchParams.set("iiprop", "url|mime|size|extmetadata");
-  url.searchParams.set("iiurlwidth", String(maxLongEdge));
+  url.searchParams.set("iiurlwidth", String(commonsThumbnailWidth));
 
   const response = await fetchJsonCached<any>(root, url, userAgent);
   const page = response.query?.pages?.[candidate.id];
@@ -386,7 +406,7 @@ async function fetchJsonCached<T>(root: string, url: URL, userAgent: string): Pr
     return JSON.parse(await readFile(cachePath, "utf8"));
   }
 
-  const response = await fetch(url, { headers: { "User-Agent": userAgent } });
+  const response = await fetchWithRetry(url, { headers: buildApiHeaders(userAgent) });
 
   if (!response.ok) {
     throw new Error(`Wikimedia request failed: ${response.status} ${response.statusText}`);
@@ -398,13 +418,30 @@ async function fetchJsonCached<T>(root: string, url: URL, userAgent: string): Pr
 }
 
 async function downloadBytes(url: string, userAgent: string) {
-  const response = await fetch(url, { headers: { "User-Agent": userAgent } });
+  const response = await fetchWithRetry(url, { headers: { "User-Agent": userAgent } });
 
   if (!response.ok) {
     throw new Error(`Image download failed: ${response.status} ${response.statusText}`);
   }
 
   return Buffer.from(await response.arrayBuffer());
+}
+
+async function fetchWithRetry(url: URL | string, init: RequestInit) {
+  const response = await fetch(url, init);
+
+  if (response.status !== 429) {
+    return response;
+  }
+
+  const retryAfter = response.headers.get("retry-after");
+  const retryAfterSeconds = retryAfter ? Number(retryAfter) : 5;
+  await sleep(Number.isFinite(retryAfterSeconds) ? retryAfterSeconds * 1000 : 5000);
+  return fetch(url, init);
+}
+
+function sleep(milliseconds: number) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
 async function askYesNo(rl: ReturnType<typeof createInterface>, prompt: string) {
@@ -423,11 +460,15 @@ function commonsImageId(metadata: CommonsMetadata) {
   return `commons-${metadata.pageId}-${scientificNameToSlug(metadata.title.replace(/^File:/, "")).slice(0, 48)}`;
 }
 
-function parseArgs(args: string[]) {
+export function parseArgs(args: string[]) {
   const parsed: Record<string, string | undefined> = {};
 
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
+
+    if (arg === "--") {
+      continue;
+    }
 
     if (arg.startsWith("--")) {
       parsed[arg.slice(2)] = args[index + 1];
@@ -444,6 +485,35 @@ async function readJson<T>(path: string, fallback: T): Promise<T> {
   }
 
   return JSON.parse(await readFile(path, "utf8")) as T;
+}
+
+async function readEnvFile(path: string) {
+  if (!existsSync(path)) {
+    return {};
+  }
+
+  const env: Record<string, string> = {};
+  const lines = (await readFile(path, "utf8")).split(/\r?\n/);
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue;
+    }
+
+    const separatorIndex = trimmed.indexOf("=");
+
+    if (separatorIndex === -1) {
+      continue;
+    }
+
+    const key = trimmed.slice(0, separatorIndex).trim();
+    const value = trimmed.slice(separatorIndex + 1).trim().replace(/^"|"$/g, "");
+    env[key] = value;
+  }
+
+  return env;
 }
 
 async function writeJson(path: string, value: unknown) {
