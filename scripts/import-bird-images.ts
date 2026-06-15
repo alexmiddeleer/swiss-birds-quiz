@@ -44,10 +44,24 @@ type ImportLog = {
   rejectedCommonsPageIds: number[];
 };
 
+type FetchJsonCachedOptions = {
+  bypassCache?: boolean;
+};
+
 type SearchResult = {
   id: number;
   pageid?: number;
   title: string;
+  index?: number;
+};
+
+type SearchResponse = {
+  continue?: {
+    gsroffset?: number;
+  };
+  query?: {
+    pages?: Record<string, SearchResult>;
+  };
 };
 
 type CommonsMetadata = {
@@ -77,6 +91,8 @@ type ProcessedImage = {
 const maxBytes = 100 * 1024;
 const maxLongEdge = 960;
 const commonsThumbnailWidth = 800;
+const commonsSearchLimit = 25;
+const maxCommonsSearchCandidates = 100;
 const publicDomainMarkers = ["public domain", "cc0", "pd-old", "pd-self", "pd-author", "pd-usgov"];
 const reusableLicensePatterns = [/^cc-by(?:-[0-9.]+)?$/, /^cc-by-sa(?:-[0-9.]+)?$/];
 
@@ -133,13 +149,21 @@ async function main() {
   const root = process.cwd();
   const env = { ...process.env, ...(await readEnvFile(join(root, ".env"))) };
   const speciesList = await readJson<Species[]>(join(root, speciesFile), []);
+  const missingBirds = await readJson<MissingBird[]>(join(root, "data", "missing-birds.json"), []);
+  const missingScientificNames = new Set(missingBirds.map((bird) => bird.scientificName));
   const userAgent = buildUserAgent(requireWikimediaEmail(env));
   const rl = createInterface({ input, output });
   const summary = { imported: 0, skipped: 0, missing: 0 };
 
   try {
     for (const species of speciesList) {
-      const result = await importSpeciesImage(root, species, userAgent, rl);
+      const result = await importSpeciesImage(
+        root,
+        species,
+        userAgent,
+        rl,
+        missingScientificNames.has(species.scientificName),
+      );
       summary[result] += 1;
     }
   } finally {
@@ -160,6 +184,7 @@ async function importSpeciesImage(
   species: Species,
   userAgent: string,
   rl: ReturnType<typeof createInterface>,
+  bypassCache: boolean,
 ): Promise<"imported" | "skipped" | "missing"> {
   const speciesSlug = scientificNameToSlug(species.scientificName);
   const catalog = await readCatalog(root);
@@ -174,8 +199,12 @@ async function importSpeciesImage(
   const queries = [species.scientificName, species.commonName];
   const seenPageIds = new Set<number>();
 
+  if (bypassCache) {
+    console.log(`Refreshing missing bird without cache: ${species.scientificName}`);
+  }
+
   for (const query of queries) {
-    const candidates = await searchCommons(root, query, userAgent);
+    const candidates = await searchCommons(root, query, userAgent, { bypassCache });
 
     for (const candidate of candidates) {
       if (seenPageIds.has(candidate.id) || importLog.rejectedCommonsPageIds.includes(candidate.id)) {
@@ -183,7 +212,7 @@ async function importSpeciesImage(
       }
 
       seenPageIds.add(candidate.id);
-      const metadata = await fetchCommonsMetadata(root, candidate, userAgent);
+      const metadata = await fetchCommonsMetadata(root, candidate, userAgent, { bypassCache });
 
       if (!metadata || !isAcceptedReusableLicense(metadata)) {
         await rejectCandidate(root, speciesSlug, importLog, candidate.id);
@@ -231,28 +260,58 @@ async function importSpeciesImage(
   return "missing";
 }
 
-async function searchCommons(root: string, query: string, userAgent: string) {
-  const url = buildCommonsSearchUrl(query);
+export async function searchCommons(
+  root: string,
+  query: string,
+  userAgent: string,
+  options: FetchJsonCachedOptions = {},
+) {
+  const candidates: Array<{ id: number; title: string; index: number }> = [];
+  const seenPageIds = new Set<number>();
+  let offset = 0;
 
-  const response = await fetchJsonCached<{ query?: { pages?: Record<string, SearchResult> } }>(
-    root,
-    url,
-    userAgent,
-  );
-  return Object.values(response.query?.pages ?? {})
-    .map((page) => ({ id: page.id ?? page.pageid ?? 0, title: page.title }))
-    .filter((page) => page.id && page.title.startsWith("File:"))
-    .sort((left, right) => left.title.localeCompare(right.title));
+  while (candidates.length < maxCommonsSearchCandidates) {
+    const url = buildCommonsSearchUrl(query, offset);
+    const response = await fetchJsonCached<SearchResponse>(root, url, userAgent, options);
+    const pages = Object.values(response.query?.pages ?? {})
+      .map((page) => ({
+        id: page.id ?? page.pageid ?? 0,
+        title: page.title,
+        index: page.index ?? Number.MAX_SAFE_INTEGER,
+      }))
+      .filter((page) => page.id && page.title.startsWith("File:"))
+      .sort((left, right) => left.index - right.index);
+
+    for (const page of pages) {
+      if (!seenPageIds.has(page.id)) {
+        seenPageIds.add(page.id);
+        candidates.push(page);
+      }
+    }
+
+    const nextOffset = response.continue?.gsroffset;
+
+    if (nextOffset === undefined || nextOffset <= offset) {
+      break;
+    }
+
+    offset = nextOffset;
+  }
+
+  return candidates.slice(0, maxCommonsSearchCandidates).map(({ id, title }) => ({ id, title }));
 }
 
-export function buildCommonsSearchUrl(query: string) {
+export function buildCommonsSearchUrl(query: string, offset = 0) {
   const url = new URL("https://commons.wikimedia.org/w/api.php");
   url.searchParams.set("action", "query");
   url.searchParams.set("format", "json");
   url.searchParams.set("generator", "search");
   url.searchParams.set("gsrsearch", query);
   url.searchParams.set("gsrnamespace", "6");
-  url.searchParams.set("gsrlimit", "25");
+  url.searchParams.set("gsrlimit", String(commonsSearchLimit));
+  if (offset > 0) {
+    url.searchParams.set("gsroffset", String(offset));
+  }
   url.searchParams.set("prop", "info");
   return url;
 }
@@ -261,6 +320,7 @@ async function fetchCommonsMetadata(
   root: string,
   candidate: SearchResult,
   userAgent: string,
+  options: FetchJsonCachedOptions = {},
 ): Promise<CommonsMetadata | null> {
   const url = new URL("https://commons.wikimedia.org/w/api.php");
   url.searchParams.set("action", "query");
@@ -270,7 +330,7 @@ async function fetchCommonsMetadata(
   url.searchParams.set("iiprop", "url|mime|size|extmetadata");
   url.searchParams.set("iiurlwidth", String(commonsThumbnailWidth));
 
-  const response = await fetchJsonCached<any>(root, url, userAgent);
+  const response = await fetchJsonCached<any>(root, url, userAgent, options);
   const page = response.query?.pages?.[candidate.id];
   const imageInfo = page?.imageinfo?.[0];
 
@@ -430,10 +490,15 @@ async function removeMissingBird(root: string, scientificName: string) {
   );
 }
 
-async function fetchJsonCached<T>(root: string, url: URL, userAgent: string): Promise<T> {
+export async function fetchJsonCached<T>(
+  root: string,
+  url: URL,
+  userAgent: string,
+  options: FetchJsonCachedOptions = {},
+): Promise<T> {
   const cachePath = join(root, "tmp", "wikimedia-cache", `${hash(url.toString())}.json`);
 
-  if (existsSync(cachePath)) {
+  if (!options.bypassCache && existsSync(cachePath)) {
     return JSON.parse(await readFile(cachePath, "utf8"));
   }
 
@@ -444,7 +509,11 @@ async function fetchJsonCached<T>(root: string, url: URL, userAgent: string): Pr
   }
 
   const json = (await response.json()) as T;
-  await writeJson(cachePath, json);
+
+  if (!options.bypassCache) {
+    await writeJson(cachePath, json);
+  }
+
   return json;
 }
 

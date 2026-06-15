@@ -1,6 +1,18 @@
 {
   "birds": [
     {
+      "scientificName": "Erithacus rubecula",
+      "commonName": "European robin",
+      "slug": "erithacus-rubecula",
+      "images": [
+        {
+          "id": "commons-144383707-european-robin-2024-01-21-02-jpg",
+          "path": "/birds/erithacus-rubecula/commons-144383707-european-robin-2024-01-21-02-jpg.webp",
+          "provenancePath": "/birds/erithacus-rubecula/commons-144383707-european-robin-2024-01-21-02-jpg.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Parus major",
       "commonName": "Great tit",
       "slug": "parus-major",

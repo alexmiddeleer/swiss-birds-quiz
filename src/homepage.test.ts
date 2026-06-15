@@ -44,7 +44,7 @@ describe("homepage", () => {
     expect(root.textContent).toContain("Turdus merula");
   });
 
-  it("shows a Next bird button after the name is revealed", async () => {
+  it("shows a tab bird to proceed prompt after the name is revealed", async () => {
     const root = document.createElement("main");
 
     renderHomePage(root, testCatalog, loadTestProvenance, noShuffle);
@@ -55,12 +55,13 @@ describe("homepage", () => {
 
     root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
-    expect(root.querySelector("[data-action='next-bird']")?.textContent).toBe("Next bird");
+    expect(root.textContent).toContain("tab bird to proceed");
+    expect(root.querySelector("[data-action='next-bird']")).toBeNull();
   });
 });
 
 describe("quiz round progression", () => {
-  it("advances to the next bird unrevealed after clicking Next bird", async () => {
+  it("advances to the next bird unrevealed after tapping the revealed bird", async () => {
     const root = document.createElement("main");
 
     renderHomePage(root, twoBirdCatalog, loadTestProvenance, noShuffle);
@@ -70,8 +71,8 @@ describe("quiz round progression", () => {
     // Reveal first bird
     root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
-    // Click Next bird
-    root.querySelector("[data-action='next-bird']")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    // Tap revealed bird to proceed
+    root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     await Promise.resolve();
 
     expect(root.querySelector("img")?.getAttribute("src")).toBe("/birds/parus-major/greattit.webp");
@@ -145,12 +146,12 @@ describe("Quiz round restart", () => {
 
     // Reveal first bird and advance
     root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    root.querySelector("[data-action='next-bird']")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     await Promise.resolve();
 
     // Reveal second bird and advance (round should restart)
     root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    root.querySelector("[data-action='next-bird']")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     await Promise.resolve();
 
     // Should be back to an unrevealed bird card (round restarted)

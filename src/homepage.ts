@@ -77,33 +77,35 @@ async function renderQuiz(
 
   let roundQueue = queue.slice(1);
 
+  async function showNextBird() {
+    if (roundQueue.length === 0) {
+      roundQueue = shuffle(catalog.birds);
+    }
+    const nextBird = roundQueue.shift()!;
+    const nextImage = nextBird.images[0];
+    const prov = await loadProvenance(nextImage.provenancePath);
+    renderCard(nextBird, nextImage, prov, false);
+  }
+
   function renderCard(b: Bird, img: BirdImage, prov: ImageProvenance, revealed: boolean) {
     root.innerHTML = quizMarkup(b, img, prov, revealed);
     if (!revealed) {
       root.querySelector(".quiz-card")?.addEventListener("click", () => {
         root.innerHTML = quizMarkup(b, img, prov, true);
-        bindNextBird();
+        root.querySelector(".quiz-card")?.addEventListener("click", () => {
+          void showNextBird();
+        });
       });
     } else {
-      bindNextBird();
+      root.querySelector(".quiz-card")?.addEventListener("click", () => {
+        void showNextBird();
+      });
     }
     root.querySelector("[data-action='end-quiz']")?.addEventListener("click", () => {
       renderHomePage(root, catalog, loadProvenance, shuffle);
     });
     root.querySelector("[data-action='refresh-app']")?.addEventListener("click", () => {
       window.location.reload();
-    });
-  }
-
-  function bindNextBird() {
-    root.querySelector("[data-action='next-bird']")?.addEventListener("click", async () => {
-      if (roundQueue.length === 0) {
-        roundQueue = shuffle(catalog.birds);
-      }
-      const nextBird = roundQueue.shift()!;
-      const nextImage = nextBird.images[0];
-      const prov = await loadProvenance(nextImage.provenancePath);
-      renderCard(nextBird, nextImage, prov, false);
     });
   }
 
@@ -120,7 +122,7 @@ function quizMarkup(
     <section class="quiz" aria-labelledby="quiz-title">
       <p class="eyebrow">Practice Session</p>
       <h1 id="quiz-title">Which Swiss bird is this?</h1>
-      <figure class="quiz-card" tabindex="0" role="button" aria-label="Reveal bird name">
+      <figure class="quiz-card" tabindex="0" role="button" aria-label="${revealed ? "Show next bird" : "Reveal bird name"}">
         <img src="${assetUrl(image.path)}" alt="Bird to identify" />
         <figcaption class="citation">
           <span class="citation-title">${escapeHtml(provenance.commonsTitle ?? bird.commonName)}</span> ·
@@ -132,7 +134,7 @@ function quizMarkup(
       ${
         revealed
           ? `<div class="answer"><h2>${escapeHtml(bird.commonName)}</h2><p><i>${escapeHtml(bird.scientificName)}</i></p></div>
-             <button type="button" data-action="next-bird">Next bird</button>`
+             <p class="prompt">tab bird to proceed</p>`
           : `<p class="prompt">tap to show name</p>`
       }
     </section>
