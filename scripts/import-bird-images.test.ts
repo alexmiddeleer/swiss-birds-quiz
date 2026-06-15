@@ -8,6 +8,7 @@ import {
   buildApiHeaders,
   buildCommonsSearchUrl,
   buildUserAgent,
+  isAcceptedReusableLicense,
   parseArgs,
   requireWikimediaEmail,
   scientificNameToSlug,
@@ -50,6 +51,40 @@ describe("bird image import helpers", () => {
     expect(url.searchParams.get("generator")).toBe("search");
     expect(url.searchParams.get("gsrnamespace")).toBe("6");
     expect(url.searchParams.get("gsrsearch")).toBe("Turdus merula");
+  });
+
+  it("accepts CC BY and CC BY-SA bird images", () => {
+    expect(
+      isAcceptedReusableLicense({
+        licenseCode: "cc-by-4.0",
+        licenseShortName: "CC BY 4.0",
+        usageTerms: "Creative Commons Attribution 4.0",
+      }),
+    ).toBe(true);
+    expect(
+      isAcceptedReusableLicense({
+        licenseCode: "cc-by-sa-4.0",
+        licenseShortName: "CC BY-SA 4.0",
+        usageTerms: "Creative Commons Attribution-Share Alike 4.0",
+      }),
+    ).toBe(true);
+  });
+
+  it("rejects non-commercial or unknown licenses", () => {
+    expect(
+      isAcceptedReusableLicense({
+        licenseCode: "cc-by-nc-4.0",
+        licenseShortName: "CC BY-NC 4.0",
+        usageTerms: "Creative Commons Attribution-NonCommercial 4.0",
+      }),
+    ).toBe(false);
+    expect(
+      isAcceptedReusableLicense({
+        licenseCode: "",
+        licenseShortName: "All rights reserved",
+        usageTerms: "All rights reserved",
+      }),
+    ).toBe(false);
   });
 
   it("records missing birds without duplicating entries", async () => {

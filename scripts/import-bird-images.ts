@@ -60,6 +60,8 @@ type CommonsMetadata = {
   width: number;
   height: number;
   licenseShortName: string;
+  licenseCode: string;
+  licenseUrl: string;
   usageTerms: string;
   artist: string;
   credit: string;
@@ -76,6 +78,7 @@ const maxBytes = 100 * 1024;
 const maxLongEdge = 960;
 const commonsThumbnailWidth = 800;
 const publicDomainMarkers = ["public domain", "cc0", "pd-old", "pd-self", "pd-author", "pd-usgov"];
+const reusableLicensePatterns = [/^cc-by(?:-[0-9.]+)?$/, /^cc-by-sa(?:-[0-9.]+)?$/];
 
 export function scientificNameToSlug(scientificName: string) {
   return scientificName.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -182,7 +185,7 @@ async function importSpeciesImage(
       seenPageIds.add(candidate.id);
       const metadata = await fetchCommonsMetadata(root, candidate, userAgent);
 
-      if (!metadata || !isPublicDomain(metadata)) {
+      if (!metadata || !isAcceptedReusableLicense(metadata)) {
         await rejectCandidate(root, speciesSlug, importLog, candidate.id);
         continue;
       }
@@ -286,13 +289,25 @@ async function fetchCommonsMetadata(
     width: Number(imageInfo.width),
     height: Number(imageInfo.height),
     licenseShortName: htmlToText(ext.LicenseShortName?.value ?? ""),
+    licenseCode: htmlToText(ext.License?.value ?? ""),
+    licenseUrl: htmlToText(ext.LicenseUrl?.value ?? ""),
     usageTerms: htmlToText(ext.UsageTerms?.value ?? ""),
     artist: htmlToText(ext.Artist?.value ?? ""),
     credit: htmlToText(ext.Credit?.value ?? ""),
   };
 }
 
-function isPublicDomain(metadata: CommonsMetadata) {
+export function isAcceptedReusableLicense(metadata: {
+  licenseCode: string;
+  licenseShortName: string;
+  usageTerms: string;
+}) {
+  const licenseCode = metadata.licenseCode.toLowerCase();
+
+  if (reusableLicensePatterns.some((pattern) => pattern.test(licenseCode))) {
+    return true;
+  }
+
   const licenseText = `${metadata.licenseShortName} ${metadata.usageTerms}`.toLowerCase();
   return publicDomainMarkers.some((marker) => licenseText.includes(marker));
 }
@@ -347,6 +362,7 @@ async function storeApprovedImage(
     sourceUrl: metadata.sourceUrl,
     downloadedUrl: metadata.thumbUrl || metadata.sourceUrl,
     licenseShortName: metadata.licenseShortName,
+    licenseUrl: metadata.licenseUrl,
     usageTerms: metadata.usageTerms,
     artist: metadata.artist,
     credit: metadata.credit,

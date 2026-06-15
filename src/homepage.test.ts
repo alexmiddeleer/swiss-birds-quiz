@@ -26,6 +26,7 @@ describe("homepage", () => {
     );
     expect(root.textContent).toContain("tap to show name");
     expect(root.textContent).toContain("Photo: Bird Photographer");
+    expect(root.textContent).toContain("Blackbird portrait");
     expect(root.textContent).toContain("Own work");
     expect(root.textContent).toContain("CC0");
     expect(root.textContent).not.toContain("Common blackbird");
@@ -179,9 +180,11 @@ const testCatalog = {
 async function loadTestProvenance() {
   return {
     artist: "Bird Photographer",
+    commonsTitle: "Blackbird portrait",
     credit: "Own work",
     filePageUrl: "https://commons.wikimedia.org/wiki/File:Blackbird.jpg",
     licenseShortName: "CC0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
   };
 }
 

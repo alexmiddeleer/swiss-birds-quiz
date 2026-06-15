@@ -16,8 +16,8 @@ _Avoid_: Exam, test, finite quiz
 A complete pass through all Swiss Birds in the Bird Catalog in shuffled order. When a round ends, a new shuffled round begins automatically.
 _Avoid_: Game, level, set
 
-**Public Domain Bird Image**:
-A bird image that can be reused without copyright permission or attribution requirements.
+**Reusable Bird Image**:
+A bird image that the app may ship under public-domain or open-license terms it can visibly honor.
 _Avoid_: Free image, Wikimedia image
 
 **Image Provenance**:
@@ -29,7 +29,7 @@ A visible source note for a bird image shown to learners.
 _Avoid_: Hidden provenance, footnote
 
 **Approved Bird Image**:
-A Public Domain Bird Image accepted by a human reviewer as suitable for learning a Swiss Bird.
+A Reusable Bird Image accepted by a human reviewer as suitable for learning a Swiss Bird.
 _Avoid_: Selected image, downloaded image
 
 **Image Review**:
@@ -65,10 +65,10 @@ _Avoid_: Remote image, CDN image
 - A **Practice Session** is composed of one or more **Quiz Rounds**.
 - A **Quiz Round** presents every **Swiss Bird** in the **Bird Catalog** in shuffled order.
 - A **Swiss Bird** can have one or more **Approved Bird Images**.
-- A **Public Domain Bird Image** has **Image Provenance**.
+- A **Reusable Bird Image** has **Image Provenance**.
 - An **Image Citation** is derived from **Image Provenance**.
-- An **Approved Bird Image** is a **Public Domain Bird Image**.
-- An **Image Review** can approve a **Public Domain Bird Image** as an **Approved Bird Image**.
+- An **Approved Bird Image** is a **Reusable Bird Image**.
+- An **Image Review** can approve a **Reusable Bird Image** as an **Approved Bird Image**.
 - A **Processed Bird Image** is produced from an **Approved Bird Image**.
 - A **Rejected Bird Image** should not be reviewed again for the same **Swiss Bird** unless intentionally reconsidered.
 - A **Bird Catalog** lists **Swiss Birds** and their **Processed Bird Images**.
@@ -82,7 +82,7 @@ _Avoid_: Remote image, CDN image
 > **Domain expert:** "No, the goal is memorizing **Swiss Birds** while offline."
 >
 > **Dev:** "Can we use any image from Wikimedia Commons for a **Swiss Bird**?"
-> **Domain expert:** "No, only **Public Domain Bird Images** are acceptable for now."
+> **Domain expert:** "No, only **Reusable Bird Images** whose license terms we can visibly honor are acceptable."
 >
 > **Dev:** "Do we keep **Image Provenance** if attribution is not required?"
 > **Domain expert:** "Yes, because we need an audit trail for legal and ethical reuse."
@@ -93,7 +93,7 @@ _Avoid_: Remote image, CDN image
 > **Dev:** "Can we identify a **Swiss Bird** by common name only?"
 > **Domain expert:** "No, use the scientific name as identity; common name can help search and display."
 >
-> **Dev:** "Can the pipeline accept the first public domain result automatically?"
+> **Dev:** "Can the pipeline accept the first reusable result automatically?"
 > **Domain expert:** "No, a human must approve it as an **Approved Bird Image**."
 >
 > **Dev:** "Can **Image Review** happen on the raw image alone?"
@@ -126,14 +126,14 @@ _Avoid_: Remote image, CDN image
 ## Flagged ambiguities
 
 - "quiz" is project shorthand for **Practice Session**, not a formal graded exam.
-- "free image" is ambiguous because some free licenses require attribution; resolved term is **Public Domain Bird Image**.
+- "free image" is ambiguous because some free licenses require visible attribution; resolved term is **Reusable Bird Image**.
 - "metadata" is too broad for legal/ethical tracking; resolved term is **Image Provenance**.
 - "citation" means a visible **Image Citation**, not only stored **Image Provenance**.
 - Common names can be ambiguous; **Swiss Bird** identity is scientific name.
 - Public domain status alone is not enough; quiz suitability requires human approval.
 - **Image Review** uses the source page context, not only the raw image.
 - **Image Review** includes the source page and the **Processed Bird Image**.
-- **Public Domain Bird Image** excludes attribution-required licenses, even when those licenses are freely reusable.
+- **Reusable Bird Images** may require visible attribution, which the app must show to learners.
 - Storage identifiers for **Swiss Birds** should follow scientific names, not common names.
 - **Practice Sessions** use the **Bird Catalog**, not filesystem folder discovery.
 - Bulk imports should use a **Species Import List**, not implicit catalog or folder scanning.

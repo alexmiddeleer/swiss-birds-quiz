@@ -41,7 +41,7 @@ Processed bird images and provenance JSON live under `public/birds/` and should 
 
 ## Import bird images
 
-Bird images are imported from Wikimedia Commons with a human review step. The importer only accepts public domain images, stores processed WebP files under `public/birds/`, writes provenance JSON next to each image, and records species with no approved result in `data/missing-birds.json`.
+Bird images are imported from Wikimedia Commons with a human review step. The importer accepts public-domain images and open licenses the app can visibly honor, stores processed WebP files under `public/birds/`, writes provenance JSON next to each image, and records species with no approved result in `data/missing-birds.json`.
 
 Create a species list like `data/species.example.json`, then run:
 
