@@ -131,10 +131,7 @@ async function renderQuiz(
     root.innerHTML = quizMarkup(b, img, prov, revealed);
     if (!revealed) {
       root.querySelector(".quiz-card")?.addEventListener("click", () => {
-        root.innerHTML = quizMarkup(b, img, prov, true);
-        root.querySelector(".quiz-card")?.addEventListener("click", () => {
-          void showNextBird();
-        });
+        renderCard(b, img, prov, true);
       });
     } else {
       root.querySelector(".quiz-card")?.addEventListener("click", () => {
