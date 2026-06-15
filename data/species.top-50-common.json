@@ -1,0 +1,202 @@
+[
+  {
+    "scientificName": "Turdus merula",
+    "commonName": "Common blackbird"
+  },
+  {
+    "scientificName": "Parus major",
+    "commonName": "Great tit"
+  },
+  {
+    "scientificName": "Erithacus rubecula",
+    "commonName": "European robin"
+  },
+  {
+    "scientificName": "Cyanistes caeruleus",
+    "commonName": "Eurasian blue tit"
+  },
+  {
+    "scientificName": "Fringilla coelebs",
+    "commonName": "Common chaffinch"
+  },
+  {
+    "scientificName": "Passer domesticus",
+    "commonName": "House sparrow"
+  },
+  {
+    "scientificName": "Passer montanus",
+    "commonName": "Eurasian tree sparrow"
+  },
+  {
+    "scientificName": "Carduelis carduelis",
+    "commonName": "European goldfinch"
+  },
+  {
+    "scientificName": "Chloris chloris",
+    "commonName": "European greenfinch"
+  },
+  {
+    "scientificName": "Linaria cannabina",
+    "commonName": "Common linnet"
+  },
+  {
+    "scientificName": "Spinus spinus",
+    "commonName": "Eurasian siskin"
+  },
+  {
+    "scientificName": "Coccothraustes coccothraustes",
+    "commonName": "Hawfinch"
+  },
+  {
+    "scientificName": "Pyrrhula pyrrhula",
+    "commonName": "Eurasian bullfinch"
+  },
+  {
+    "scientificName": "Garrulus glandarius",
+    "commonName": "Eurasian jay"
+  },
+  {
+    "scientificName": "Pica pica",
+    "commonName": "Eurasian magpie"
+  },
+  {
+    "scientificName": "Corvus corone",
+    "commonName": "Carrion crow"
+  },
+  {
+    "scientificName": "Corvus frugilegus",
+    "commonName": "Rook"
+  },
+  {
+    "scientificName": "Coloeus monedula",
+    "commonName": "Western jackdaw"
+  },
+  {
+    "scientificName": "Corvus corax",
+    "commonName": "Common raven"
+  },
+  {
+    "scientificName": "Sturnus vulgaris",
+    "commonName": "Common starling"
+  },
+  {
+    "scientificName": "Turdus philomelos",
+    "commonName": "Song thrush"
+  },
+  {
+    "scientificName": "Turdus viscivorus",
+    "commonName": "Mistle thrush"
+  },
+  {
+    "scientificName": "Turdus pilaris",
+    "commonName": "Fieldfare"
+  },
+  {
+    "scientificName": "Turdus iliacus",
+    "commonName": "Redwing"
+  },
+  {
+    "scientificName": "Motacilla alba",
+    "commonName": "White wagtail"
+  },
+  {
+    "scientificName": "Motacilla cinerea",
+    "commonName": "Grey wagtail"
+  },
+  {
+    "scientificName": "Motacilla flava",
+    "commonName": "Western yellow wagtail"
+  },
+  {
+    "scientificName": "Anthus pratensis",
+    "commonName": "Meadow pipit"
+  },
+  {
+    "scientificName": "Anthus trivialis",
+    "commonName": "Tree pipit"
+  },
+  {
+    "scientificName": "Alauda arvensis",
+    "commonName": "Eurasian skylark"
+  },
+  {
+    "scientificName": "Hirundo rustica",
+    "commonName": "Barn swallow"
+  },
+  {
+    "scientificName": "Delichon urbicum",
+    "commonName": "Common house martin"
+  },
+  {
+    "scientificName": "Riparia riparia",
+    "commonName": "Sand martin"
+  },
+  {
+    "scientificName": "Apus apus",
+    "commonName": "Common swift"
+  },
+  {
+    "scientificName": "Phylloscopus collybita",
+    "commonName": "Common chiffchaff"
+  },
+  {
+    "scientificName": "Phylloscopus trochilus",
+    "commonName": "Willow warbler"
+  },
+  {
+    "scientificName": "Sylvia atricapilla",
+    "commonName": "Eurasian blackcap"
+  },
+  {
+    "scientificName": "Curruca communis",
+    "commonName": "Common whitethroat"
+  },
+  {
+    "scientificName": "Sylvia borin",
+    "commonName": "Garden warbler"
+  },
+  {
+    "scientificName": "Troglodytes troglodytes",
+    "commonName": "Eurasian wren"
+  },
+  {
+    "scientificName": "Prunella modularis",
+    "commonName": "Dunnock"
+  },
+  {
+    "scientificName": "Regulus regulus",
+    "commonName": "Goldcrest"
+  },
+  {
+    "scientificName": "Regulus ignicapilla",
+    "commonName": "Firecrest"
+  },
+  {
+    "scientificName": "Certhia brachydactyla",
+    "commonName": "Short-toed treecreeper"
+  },
+  {
+    "scientificName": "Certhia familiaris",
+    "commonName": "Eurasian treecreeper"
+  },
+  {
+    "scientificName": "Sitta europaea",
+    "commonName": "Eurasian nuthatch"
+  },
+  {
+    "scientificName": "Poecile palustris",
+    "commonName": "Marsh tit"
+  },
+  {
+    "scientificName": "Lophophanes cristatus",
+    "commonName": "Crested tit"
+  },
+  {
+    "scientificName": "Aegithalos caudatus",
+    "commonName": "Long-tailed tit"
+  },
+  {
+    "scientificName": "Acrocephalus scirpaceus",
+    "commonName": "Eurasian reed warbler"
+  }
+]

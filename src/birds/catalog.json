@@ -1,6 +1,222 @@
 {
   "birds": [
     {
+      "scientificName": "Acrocephalus scirpaceus",
+      "commonName": "Eurasian reed warbler",
+      "slug": "acrocephalus-scirpaceus",
+      "images": [
+        {
+          "id": "commons-158297285-blyth-s-reed-warbler-in-baruipur-december-2024-b",
+          "path": "/birds/acrocephalus-scirpaceus/commons-158297285-blyth-s-reed-warbler-in-baruipur-december-2024-b.webp",
+          "provenancePath": "/birds/acrocephalus-scirpaceus/commons-158297285-blyth-s-reed-warbler-in-baruipur-december-2024-b.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Aegithalos caudatus",
+      "commonName": "Long-tailed tit",
+      "slug": "aegithalos-caudatus",
+      "images": [
+        {
+          "id": "commons-31448641-aegithalos-caudatus-front-on-2-jpg",
+          "path": "/birds/aegithalos-caudatus/commons-31448641-aegithalos-caudatus-front-on-2-jpg.webp",
+          "provenancePath": "/birds/aegithalos-caudatus/commons-31448641-aegithalos-caudatus-front-on-2-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Alauda arvensis",
+      "commonName": "Eurasian skylark",
+      "slug": "alauda-arvensis",
+      "images": [
+        {
+          "id": "commons-7209988-skylark-2-lake-district-england-june-2009-jpg",
+          "path": "/birds/alauda-arvensis/commons-7209988-skylark-2-lake-district-england-june-2009-jpg.webp",
+          "provenancePath": "/birds/alauda-arvensis/commons-7209988-skylark-2-lake-district-england-june-2009-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Anthus pratensis",
+      "commonName": "Meadow pipit",
+      "slug": "anthus-pratensis",
+      "images": [
+        {
+          "id": "commons-85167108-anthus-pratensis-puy-gros-20190805-t193133-jpg",
+          "path": "/birds/anthus-pratensis/commons-85167108-anthus-pratensis-puy-gros-20190805-t193133-jpg.webp",
+          "provenancePath": "/birds/anthus-pratensis/commons-85167108-anthus-pratensis-puy-gros-20190805-t193133-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Anthus trivialis",
+      "commonName": "Tree pipit",
+      "slug": "anthus-trivialis",
+      "images": [
+        {
+          "id": "commons-62100302-tree-pipit-anthus-trivialis-jpg",
+          "path": "/birds/anthus-trivialis/commons-62100302-tree-pipit-anthus-trivialis-jpg.webp",
+          "provenancePath": "/birds/anthus-trivialis/commons-62100302-tree-pipit-anthus-trivialis-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Apus apus",
+      "commonName": "Common swift",
+      "slug": "apus-apus",
+      "images": [
+        {
+          "id": "commons-170916652-common-swift-2025-07-18-02-jpg",
+          "path": "/birds/apus-apus/commons-170916652-common-swift-2025-07-18-02-jpg.webp",
+          "provenancePath": "/birds/apus-apus/commons-170916652-common-swift-2025-07-18-02-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Carduelis carduelis",
+      "commonName": "European goldfinch",
+      "slug": "carduelis-carduelis",
+      "images": [
+        {
+          "id": "commons-31627034-carduelis-carduelis-close-up-jpg",
+          "path": "/birds/carduelis-carduelis/commons-31627034-carduelis-carduelis-close-up-jpg.webp",
+          "provenancePath": "/birds/carduelis-carduelis/commons-31627034-carduelis-carduelis-close-up-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Certhia brachydactyla",
+      "commonName": "Short-toed treecreeper",
+      "slug": "certhia-brachydactyla",
+      "images": [
+        {
+          "id": "commons-118003983-short-toed-treecreeper-certhia-brachydactyla-bra",
+          "path": "/birds/certhia-brachydactyla/commons-118003983-short-toed-treecreeper-certhia-brachydactyla-bra.webp",
+          "provenancePath": "/birds/certhia-brachydactyla/commons-118003983-short-toed-treecreeper-certhia-brachydactyla-bra.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Certhia familiaris",
+      "commonName": "Eurasian treecreeper",
+      "slug": "certhia-familiaris",
+      "images": [
+        {
+          "id": "commons-12341943-treecreeper-certhia-familiaris-3-jpg",
+          "path": "/birds/certhia-familiaris/commons-12341943-treecreeper-certhia-familiaris-3-jpg.webp",
+          "provenancePath": "/birds/certhia-familiaris/commons-12341943-treecreeper-certhia-familiaris-3-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Chloris chloris",
+      "commonName": "European greenfinch",
+      "slug": "chloris-chloris",
+      "images": [
+        {
+          "id": "commons-80952768-chloris-chloris-profile-jpg",
+          "path": "/birds/chloris-chloris/commons-80952768-chloris-chloris-profile-jpg.webp",
+          "provenancePath": "/birds/chloris-chloris/commons-80952768-chloris-chloris-profile-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Coccothraustes coccothraustes",
+      "commonName": "Hawfinch",
+      "slug": "coccothraustes-coccothraustes",
+      "images": [
+        {
+          "id": "commons-192503057-hawfinch-coccothraustes-coccothraustes-male-dren",
+          "path": "/birds/coccothraustes-coccothraustes/commons-192503057-hawfinch-coccothraustes-coccothraustes-male-dren.webp",
+          "provenancePath": "/birds/coccothraustes-coccothraustes/commons-192503057-hawfinch-coccothraustes-coccothraustes-male-dren.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Coloeus monedula",
+      "commonName": "Western jackdaw",
+      "slug": "coloeus-monedula",
+      "images": [
+        {
+          "id": "commons-18365486-crop-corvus-monedula-naakka-naantalin-hautausmaa",
+          "path": "/birds/coloeus-monedula/commons-18365486-crop-corvus-monedula-naakka-naantalin-hautausmaa.webp",
+          "provenancePath": "/birds/coloeus-monedula/commons-18365486-crop-corvus-monedula-naakka-naantalin-hautausmaa.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Corvus corax",
+      "commonName": "Common raven",
+      "slug": "corvus-corax",
+      "images": [
+        {
+          "id": "commons-26413439-corvus-corax-common-raven-yosemite-np-ca-us-dili",
+          "path": "/birds/corvus-corax/commons-26413439-corvus-corax-common-raven-yosemite-np-ca-us-dili.webp",
+          "provenancePath": "/birds/corvus-corax/commons-26413439-corvus-corax-common-raven-yosemite-np-ca-us-dili.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Corvus corone",
+      "commonName": "Carrion crow",
+      "slug": "corvus-corone",
+      "images": [
+        {
+          "id": "commons-114215453-carrion-crow-corvus-corone-head-jpg",
+          "path": "/birds/corvus-corone/commons-114215453-carrion-crow-corvus-corone-head-jpg.webp",
+          "provenancePath": "/birds/corvus-corone/commons-114215453-carrion-crow-corvus-corone-head-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Corvus frugilegus",
+      "commonName": "Rook",
+      "slug": "corvus-frugilegus",
+      "images": [
+        {
+          "id": "commons-129035453-corvus-frugilegus-krak-w-20230225-0900-2882-jpg",
+          "path": "/birds/corvus-frugilegus/commons-129035453-corvus-frugilegus-krak-w-20230225-0900-2882-jpg.webp",
+          "provenancePath": "/birds/corvus-frugilegus/commons-129035453-corvus-frugilegus-krak-w-20230225-0900-2882-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Curruca communis",
+      "commonName": "Common whitethroat",
+      "slug": "curruca-communis",
+      "images": [
+        {
+          "id": "commons-168023151-common-whitethroat-2025-05-25-jpg",
+          "path": "/birds/curruca-communis/commons-168023151-common-whitethroat-2025-05-25-jpg.webp",
+          "provenancePath": "/birds/curruca-communis/commons-168023151-common-whitethroat-2025-05-25-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Cyanistes caeruleus",
+      "commonName": "Eurasian blue tit",
+      "slug": "cyanistes-caeruleus",
+      "images": [
+        {
+          "id": "commons-4935107-cyanistes-caeruleus-3-luc-viatour-jpg",
+          "path": "/birds/cyanistes-caeruleus/commons-4935107-cyanistes-caeruleus-3-luc-viatour-jpg.webp",
+          "provenancePath": "/birds/cyanistes-caeruleus/commons-4935107-cyanistes-caeruleus-3-luc-viatour-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Delichon urbicum",
+      "commonName": "Common house martin",
+      "slug": "delichon-urbicum",
+      "images": [
+        {
+          "id": "commons-122564547-house-martins-delichon-urbicum-meridionale-at-ne",
+          "path": "/birds/delichon-urbicum/commons-122564547-house-martins-delichon-urbicum-meridionale-at-ne.webp",
+          "provenancePath": "/birds/delichon-urbicum/commons-122564547-house-martins-delichon-urbicum-meridionale-at-ne.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Erithacus rubecula",
       "commonName": "European robin",
       "slug": "erithacus-rubecula",
@@ -9,6 +225,102 @@
           "id": "commons-144383707-european-robin-2024-01-21-02-jpg",
           "path": "/birds/erithacus-rubecula/commons-144383707-european-robin-2024-01-21-02-jpg.webp",
           "provenancePath": "/birds/erithacus-rubecula/commons-144383707-european-robin-2024-01-21-02-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Fringilla coelebs",
+      "commonName": "Common chaffinch",
+      "slug": "fringilla-coelebs",
+      "images": [
+        {
+          "id": "commons-2195980-fringilla-coelebs-chaffinch-male-edit2-jpg",
+          "path": "/birds/fringilla-coelebs/commons-2195980-fringilla-coelebs-chaffinch-male-edit2-jpg.webp",
+          "provenancePath": "/birds/fringilla-coelebs/commons-2195980-fringilla-coelebs-chaffinch-male-edit2-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Garrulus glandarius",
+      "commonName": "Eurasian jay",
+      "slug": "garrulus-glandarius",
+      "images": [
+        {
+          "id": "commons-5933620-garrulus-glandarius-1-luc-viatour-jpg",
+          "path": "/birds/garrulus-glandarius/commons-5933620-garrulus-glandarius-1-luc-viatour-jpg.webp",
+          "provenancePath": "/birds/garrulus-glandarius/commons-5933620-garrulus-glandarius-1-luc-viatour-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Hirundo rustica",
+      "commonName": "Barn swallow",
+      "slug": "hirundo-rustica",
+      "images": [
+        {
+          "id": "commons-46697315-2013-06-23-08-wesenberg-rauchschwalben-jpg",
+          "path": "/birds/hirundo-rustica/commons-46697315-2013-06-23-08-wesenberg-rauchschwalben-jpg.webp",
+          "provenancePath": "/birds/hirundo-rustica/commons-46697315-2013-06-23-08-wesenberg-rauchschwalben-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Linaria cannabina",
+      "commonName": "Common linnet",
+      "slug": "linaria-cannabina",
+      "images": [
+        {
+          "id": "commons-106997772-common-linnet-linaria-cannabina-mediterranea-mal",
+          "path": "/birds/linaria-cannabina/commons-106997772-common-linnet-linaria-cannabina-mediterranea-mal.webp",
+          "provenancePath": "/birds/linaria-cannabina/commons-106997772-common-linnet-linaria-cannabina-mediterranea-mal.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Lophophanes cristatus",
+      "commonName": "Crested tit",
+      "slug": "lophophanes-cristatus",
+      "images": [
+        {
+          "id": "commons-5582176-lophophanes-cristatus-luc-viatour-2-jpg",
+          "path": "/birds/lophophanes-cristatus/commons-5582176-lophophanes-cristatus-luc-viatour-2-jpg.webp",
+          "provenancePath": "/birds/lophophanes-cristatus/commons-5582176-lophophanes-cristatus-luc-viatour-2-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Motacilla alba",
+      "commonName": "White wagtail",
+      "slug": "motacilla-alba",
+      "images": [
+        {
+          "id": "commons-188947682-bachstelze-bergeronnette-grise-white-wagtail-mot",
+          "path": "/birds/motacilla-alba/commons-188947682-bachstelze-bergeronnette-grise-white-wagtail-mot.webp",
+          "provenancePath": "/birds/motacilla-alba/commons-188947682-bachstelze-bergeronnette-grise-white-wagtail-mot.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Motacilla cinerea",
+      "commonName": "Grey wagtail",
+      "slug": "motacilla-cinerea",
+      "images": [
+        {
+          "id": "commons-53337104-grey-wagtail-at-tenn-ji-park-in-osaka-november-2",
+          "path": "/birds/motacilla-cinerea/commons-53337104-grey-wagtail-at-tenn-ji-park-in-osaka-november-2.webp",
+          "provenancePath": "/birds/motacilla-cinerea/commons-53337104-grey-wagtail-at-tenn-ji-park-in-osaka-november-2.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Motacilla flava",
+      "commonName": "Western yellow wagtail",
+      "slug": "motacilla-flava",
+      "images": [
+        {
+          "id": "commons-66312932-yellow-wagtail-motacilla-flava-feldegg-male-jpg",
+          "path": "/birds/motacilla-flava/commons-66312932-yellow-wagtail-motacilla-flava-feldegg-male-jpg.webp",
+          "provenancePath": "/birds/motacilla-flava/commons-66312932-yellow-wagtail-motacilla-flava-feldegg-male-jpg.json"
         }
       ]
     },
@@ -25,6 +337,222 @@
       ]
     },
     {
+      "scientificName": "Passer domesticus",
+      "commonName": "House sparrow",
+      "slug": "passer-domesticus",
+      "images": [
+        {
+          "id": "commons-125462845-house-sparrow-male-in-prospect-park-53532-jpg",
+          "path": "/birds/passer-domesticus/commons-125462845-house-sparrow-male-in-prospect-park-53532-jpg.webp",
+          "provenancePath": "/birds/passer-domesticus/commons-125462845-house-sparrow-male-in-prospect-park-53532-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Passer montanus",
+      "commonName": "Eurasian tree sparrow",
+      "slug": "passer-montanus",
+      "images": [
+        {
+          "id": "commons-46048774-eurasian-tree-sparrow-at-tenn-ji-park-in-osaka-d",
+          "path": "/birds/passer-montanus/commons-46048774-eurasian-tree-sparrow-at-tenn-ji-park-in-osaka-d.webp",
+          "provenancePath": "/birds/passer-montanus/commons-46048774-eurasian-tree-sparrow-at-tenn-ji-park-in-osaka-d.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Phylloscopus collybita",
+      "commonName": "Common chiffchaff",
+      "slug": "phylloscopus-collybita",
+      "images": [
+        {
+          "id": "commons-164516402-common-chiffchaff-2025-04-04-01-jpg",
+          "path": "/birds/phylloscopus-collybita/commons-164516402-common-chiffchaff-2025-04-04-01-jpg.webp",
+          "provenancePath": "/birds/phylloscopus-collybita/commons-164516402-common-chiffchaff-2025-04-04-01-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Phylloscopus trochilus",
+      "commonName": "Willow warbler",
+      "slug": "phylloscopus-trochilus",
+      "images": [
+        {
+          "id": "commons-55072019-phylloscopus-trochilus-willow-warbler-adana-2017",
+          "path": "/birds/phylloscopus-trochilus/commons-55072019-phylloscopus-trochilus-willow-warbler-adana-2017.webp",
+          "provenancePath": "/birds/phylloscopus-trochilus/commons-55072019-phylloscopus-trochilus-willow-warbler-adana-2017.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Pica pica",
+      "commonName": "Eurasian magpie",
+      "slug": "pica-pica",
+      "images": [
+        {
+          "id": "commons-75566932-madagascar-magpie-robin-copsychus-albospecularis",
+          "path": "/birds/pica-pica/commons-75566932-madagascar-magpie-robin-copsychus-albospecularis.webp",
+          "provenancePath": "/birds/pica-pica/commons-75566932-madagascar-magpie-robin-copsychus-albospecularis.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Poecile palustris",
+      "commonName": "Marsh tit",
+      "slug": "poecile-palustris",
+      "images": [
+        {
+          "id": "commons-1550036-parus-palustris02-jpg",
+          "path": "/birds/poecile-palustris/commons-1550036-parus-palustris02-jpg.webp",
+          "provenancePath": "/birds/poecile-palustris/commons-1550036-parus-palustris02-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Prunella modularis",
+      "commonName": "Dunnock",
+      "slug": "prunella-modularis",
+      "images": [
+        {
+          "id": "commons-100803904-the-dunnock-prunella-modularis-jpg",
+          "path": "/birds/prunella-modularis/commons-100803904-the-dunnock-prunella-modularis-jpg.webp",
+          "provenancePath": "/birds/prunella-modularis/commons-100803904-the-dunnock-prunella-modularis-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Pyrrhula pyrrhula",
+      "commonName": "Eurasian bullfinch",
+      "slug": "pyrrhula-pyrrhula",
+      "images": [
+        {
+          "id": "commons-32159869-pyrrhula-pyrrhula-female-2-jpg",
+          "path": "/birds/pyrrhula-pyrrhula/commons-32159869-pyrrhula-pyrrhula-female-2-jpg.webp",
+          "provenancePath": "/birds/pyrrhula-pyrrhula/commons-32159869-pyrrhula-pyrrhula-female-2-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Regulus ignicapilla",
+      "commonName": "Firecrest",
+      "slug": "regulus-ignicapilla",
+      "images": [
+        {
+          "id": "commons-144687519-firecrest-2024-01-28-03-jpg",
+          "path": "/birds/regulus-ignicapilla/commons-144687519-firecrest-2024-01-28-03-jpg.webp",
+          "provenancePath": "/birds/regulus-ignicapilla/commons-144687519-firecrest-2024-01-28-03-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Regulus regulus",
+      "commonName": "Goldcrest",
+      "slug": "regulus-regulus",
+      "images": [
+        {
+          "id": "commons-38667947-goldcrest-1-jpg",
+          "path": "/birds/regulus-regulus/commons-38667947-goldcrest-1-jpg.webp",
+          "provenancePath": "/birds/regulus-regulus/commons-38667947-goldcrest-1-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Riparia riparia",
+      "commonName": "Sand martin",
+      "slug": "riparia-riparia",
+      "images": [
+        {
+          "id": "commons-122771123-sand-martins-riparia-riparia-jpg",
+          "path": "/birds/riparia-riparia/commons-122771123-sand-martins-riparia-riparia-jpg.webp",
+          "provenancePath": "/birds/riparia-riparia/commons-122771123-sand-martins-riparia-riparia-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Sitta europaea",
+      "commonName": "Eurasian nuthatch",
+      "slug": "sitta-europaea",
+      "images": [
+        {
+          "id": "commons-396894-sitta-europaea-wildlife-3-jpg",
+          "path": "/birds/sitta-europaea/commons-396894-sitta-europaea-wildlife-3-jpg.webp",
+          "provenancePath": "/birds/sitta-europaea/commons-396894-sitta-europaea-wildlife-3-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Spinus spinus",
+      "commonName": "Eurasian siskin",
+      "slug": "spinus-spinus",
+      "images": [
+        {
+          "id": "commons-131666015-eurasian-siskin-spinus-spinus-female-biebrzanski",
+          "path": "/birds/spinus-spinus/commons-131666015-eurasian-siskin-spinus-spinus-female-biebrzanski.webp",
+          "provenancePath": "/birds/spinus-spinus/commons-131666015-eurasian-siskin-spinus-spinus-female-biebrzanski.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Sturnus vulgaris",
+      "commonName": "Common starling",
+      "slug": "sturnus-vulgaris",
+      "images": [
+        {
+          "id": "commons-126243768-sturnus-vulgaris-european-starling-at-bodega-hea",
+          "path": "/birds/sturnus-vulgaris/commons-126243768-sturnus-vulgaris-european-starling-at-bodega-hea.webp",
+          "provenancePath": "/birds/sturnus-vulgaris/commons-126243768-sturnus-vulgaris-european-starling-at-bodega-hea.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Sylvia atricapilla",
+      "commonName": "Eurasian blackcap",
+      "slug": "sylvia-atricapilla",
+      "images": [
+        {
+          "id": "commons-104326583-blackcap-sylvia-atricapilla-male-jpg",
+          "path": "/birds/sylvia-atricapilla/commons-104326583-blackcap-sylvia-atricapilla-male-jpg.webp",
+          "provenancePath": "/birds/sylvia-atricapilla/commons-104326583-blackcap-sylvia-atricapilla-male-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Sylvia borin",
+      "commonName": "Garden warbler",
+      "slug": "sylvia-borin",
+      "images": [
+        {
+          "id": "commons-69511119-garden-warbler-sylvia-borin-at-the-unesco-biosph",
+          "path": "/birds/sylvia-borin/commons-69511119-garden-warbler-sylvia-borin-at-the-unesco-biosph.webp",
+          "provenancePath": "/birds/sylvia-borin/commons-69511119-garden-warbler-sylvia-borin-at-the-unesco-biosph.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Troglodytes troglodytes",
+      "commonName": "Eurasian wren",
+      "slug": "troglodytes-troglodytes",
+      "images": [
+        {
+          "id": "commons-113441158-eurasian-wren-troglodytes-troglodytes-jpg",
+          "path": "/birds/troglodytes-troglodytes/commons-113441158-eurasian-wren-troglodytes-troglodytes-jpg.webp",
+          "provenancePath": "/birds/troglodytes-troglodytes/commons-113441158-eurasian-wren-troglodytes-troglodytes-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Turdus iliacus",
+      "commonName": "Redwing",
+      "slug": "turdus-iliacus",
+      "images": [
+        {
+          "id": "commons-1907996-redwing-turdus-iliacus-jpg",
+          "path": "/birds/turdus-iliacus/commons-1907996-redwing-turdus-iliacus-jpg.webp",
+          "provenancePath": "/birds/turdus-iliacus/commons-1907996-redwing-turdus-iliacus-jpg.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Turdus merula",
       "commonName": "Common blackbird",
       "slug": "turdus-merula",
@@ -33,6 +561,42 @@
           "id": "commons-75068628-amselm-nnchen-der-unterart-t-m-azorensis-auf-ter",
           "path": "/birds/turdus-merula/commons-75068628-amselm-nnchen-der-unterart-t-m-azorensis-auf-ter.webp",
           "provenancePath": "/birds/turdus-merula/commons-75068628-amselm-nnchen-der-unterart-t-m-azorensis-auf-ter.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Turdus philomelos",
+      "commonName": "Song thrush",
+      "slug": "turdus-philomelos",
+      "images": [
+        {
+          "id": "commons-120441129-song-thrush-turdus-philomelos-philomelos-jpg",
+          "path": "/birds/turdus-philomelos/commons-120441129-song-thrush-turdus-philomelos-philomelos-jpg.webp",
+          "provenancePath": "/birds/turdus-philomelos/commons-120441129-song-thrush-turdus-philomelos-philomelos-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Turdus pilaris",
+      "commonName": "Fieldfare",
+      "slug": "turdus-pilaris",
+      "images": [
+        {
+          "id": "commons-784109-fieldfare-aka-turdus-pilaris-jpg",
+          "path": "/birds/turdus-pilaris/commons-784109-fieldfare-aka-turdus-pilaris-jpg.webp",
+          "provenancePath": "/birds/turdus-pilaris/commons-784109-fieldfare-aka-turdus-pilaris-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Turdus viscivorus",
+      "commonName": "Mistle thrush",
+      "slug": "turdus-viscivorus",
+      "images": [
+        {
+          "id": "commons-49200148-turdus-viscivorus-brych-y-coed-jpg",
+          "path": "/birds/turdus-viscivorus/commons-49200148-turdus-viscivorus-brych-y-coed-jpg.webp",
+          "provenancePath": "/birds/turdus-viscivorus/commons-49200148-turdus-viscivorus-brych-y-coed-jpg.json"
         }
       ]
     }
