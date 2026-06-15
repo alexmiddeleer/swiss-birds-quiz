@@ -162,7 +162,7 @@ function quizMarkup(
       <figure class="quiz-card" tabindex="0" role="button" aria-label="${revealed ? "Show next bird" : "Reveal bird name"}">
         <img src="${assetUrl(image.path)}" alt="Bird to identify" />
         <figcaption class="citation">
-          <span class="citation-title">${escapeHtml(provenance.commonsTitle ?? bird.commonName)}</span> ·
+          ${revealed ? `<span class="citation-title">${escapeHtml(provenance.commonsTitle ?? bird.commonName)}</span> ·` : ""}
           Photo: ${escapeHtml(provenance.artist)} · ${escapeHtml(provenance.credit)} ·
           ${licenseMarkup(provenance)} ·
           <a href="${escapeAttribute(provenance.filePageUrl)}" target="_blank" rel="noreferrer">source</a>

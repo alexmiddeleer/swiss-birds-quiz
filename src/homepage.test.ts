@@ -85,7 +85,7 @@ describe("homepage", () => {
     );
     expect(root.textContent).toContain("tap to show name");
     expect(root.textContent).toContain("Photo: Bird Photographer");
-    expect(root.textContent).toContain("Blackbird portrait");
+    expect(root.textContent).not.toContain("Blackbird portrait");
     expect(root.textContent).toContain("Own work");
     expect(root.textContent).toContain("CC0");
     expect(root.textContent).not.toContain("Common blackbird");
@@ -102,6 +102,18 @@ describe("homepage", () => {
 
     expect(root.textContent).toContain("Common blackbird");
     expect(root.textContent).toContain("Turdus merula");
+  });
+
+  it("shows the citation title on the answer page", async () => {
+    const root = document.createElement("main");
+
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
+    root.querySelector("button")?.click();
+    await settle();
+    root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+
+    expect(root.textContent).toContain("Blackbird portrait");
   });
 
   it("shows a tab bird to proceed prompt after the name is revealed", async () => {
@@ -223,6 +235,23 @@ describe("Refresh App", () => {
     await settle();
 
     root.querySelector("[data-action='refresh-app']")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+
+    expect(reload).toHaveBeenCalledOnce();
+    vi.restoreAllMocks();
+  });
+
+  it("calls location.reload from the revealed answer page when Refresh App is activated by touch", async () => {
+    const reload = vi.fn();
+    vi.spyOn(window, "location", "get").mockReturnValue({ ...window.location, reload });
+
+    const root = document.createElement("main");
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
+    root.querySelector("button")?.click();
+    await settle();
+    root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+
+    root.querySelector("[data-action='refresh-app']")?.dispatchEvent(new Event("touchend", { bubbles: true }));
 
     expect(reload).toHaveBeenCalledOnce();
     vi.restoreAllMocks();
