@@ -1,6 +1,18 @@
 {
   "birds": [
     {
+      "scientificName": "Parus major",
+      "commonName": "Great tit",
+      "slug": "parus-major",
+      "images": [
+        {
+          "id": "commons-162794903-great-tit-parus-major-north-rhine-westphalia-jpg",
+          "path": "/birds/parus-major/commons-162794903-great-tit-parus-major-north-rhine-westphalia-jpg.webp",
+          "provenancePath": "/birds/parus-major/commons-162794903-great-tit-parus-major-north-rhine-westphalia-jpg.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Turdus merula",
       "commonName": "Common blackbird",
       "slug": "turdus-merula",
