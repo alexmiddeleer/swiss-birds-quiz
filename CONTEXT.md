@@ -60,6 +60,10 @@ _Avoid_: Failed bird, unsupported bird
 A Processed Bird Image included with the public app for offline learning.
 _Avoid_: Remote image, CDN image
 
+**Offline Warmup**:
+A home-screen asset load that confirms required quiz assets are cached before a Practice Session can start.
+_Avoid_: Preload, background fetch, optimistic start
+
 ## Relationships
 
 - A **Practice Session** is composed of one or more **Quiz Rounds**.
@@ -75,6 +79,7 @@ _Avoid_: Remote image, CDN image
 - A **Species Import List** can queue multiple **Swiss Birds** for Image Review.
 - A **Missing Bird** remains eligible for future image import attempts.
 - A **Shipped Bird Image** is available to Practice Sessions without network access.
+- An **Offline Warmup** loads **Shipped Bird Images** and **Image Provenance** before a **Practice Session** starts.
 
 ## Example dialogue
 
@@ -122,6 +127,9 @@ _Avoid_: Remote image, CDN image
 >
 > **Dev:** "Should Practice Sessions fetch bird images from Wikimedia at runtime?"
 > **Domain expert:** "No, use **Shipped Bird Images** so learning works offline."
+>
+> **Dev:** "When can a learner start a **Practice Session** offline?"
+> **Domain expert:** "Only after **Offline Warmup** has loaded the required **Shipped Bird Images** and **Image Provenance**."
 
 ## Flagged ambiguities
 
@@ -139,3 +147,4 @@ _Avoid_: Remote image, CDN image
 - Bulk imports should use a **Species Import List**, not implicit catalog or folder scanning.
 - Import attempts that do not produce an approved image record a **Missing Bird**.
 - **Shipped Bird Images** are committed app assets, not runtime Wikimedia requests.
+- "preload" is vague here; resolved term is **Offline Warmup**.

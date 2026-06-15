@@ -5,21 +5,80 @@ import { describe, expect, it, vi } from "vitest";
 import { renderHomePage } from "./homepage";
 
 describe("homepage", () => {
-  it("shows the app title and start quiz button", () => {
+  it("shows the app title and Start quiz button after Offline Warmup", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root);
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
 
     expect(root.querySelector("h1")?.textContent).toBe("Swiss Birds Quiz");
     expect(root.querySelector("button")?.textContent).toBe("Start quiz");
   });
 
+  it("runs Offline Warmup on home screen before enabling Start quiz", async () => {
+    const root = document.createElement("main");
+    const warmup = deferred<void>();
+    const warmAssets = vi.fn(() => warmup.promise);
+
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, warmAssets);
+
+    expect(warmAssets).toHaveBeenCalledOnce();
+    expect(root.querySelector("button")?.textContent).toBe("loading...");
+    expect(root.querySelector("button")?.hasAttribute("disabled")).toBe(true);
+
+    warmup.resolve();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(root.querySelector("button")?.textContent).toBe("Start quiz");
+    expect(root.querySelector("button")?.hasAttribute("disabled")).toBe(false);
+  });
+
+  it("shows Loading failed. Retry when Offline Warmup fails", async () => {
+    const root = document.createElement("main");
+    const warmAssets = vi.fn().mockRejectedValue(new Error("offline"));
+
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, warmAssets);
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(root.querySelector("button")?.textContent).toBe("Loading failed. Retry");
+    expect(root.querySelector("button")?.hasAttribute("disabled")).toBe(false);
+  });
+
+  it("retries Offline Warmup after failure", async () => {
+    const root = document.createElement("main");
+    const retryWarmup = deferred<void>();
+    const warmAssets = vi
+      .fn<() => Promise<void>>()
+      .mockRejectedValueOnce(new Error("offline"))
+      .mockImplementationOnce(() => retryWarmup.promise);
+
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, warmAssets);
+    await Promise.resolve();
+    await Promise.resolve();
+
+    root.querySelector("button")?.click();
+
+    expect(root.querySelector("button")?.textContent).toBe("loading...");
+    expect(root.querySelector("button")?.hasAttribute("disabled")).toBe(true);
+
+    retryWarmup.resolve();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(warmAssets).toHaveBeenCalledTimes(2);
+    expect(root.querySelector("button")?.textContent).toBe("Start quiz");
+    expect(root.querySelector("button")?.hasAttribute("disabled")).toBe(false);
+  });
+
   it("starts a quiz with a bird photo, prompt, and citation", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root, testCatalog, loadTestProvenance);
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
 
     expect(root.querySelector("img")?.getAttribute("src")).toBe(
       "/birds/turdus-merula/blackbird.webp",
@@ -35,9 +94,10 @@ describe("homepage", () => {
   it("reveals common and scientific names after tapping the quiz photo", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root, testCatalog, loadTestProvenance);
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
     root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
     expect(root.textContent).toContain("Common blackbird");
@@ -47,9 +107,10 @@ describe("homepage", () => {
   it("shows a tab bird to proceed prompt after the name is revealed", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle);
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
 
     expect(root.querySelector("[data-action='next-bird']")).toBeNull();
 
@@ -64,9 +125,10 @@ describe("quiz round progression", () => {
   it("advances to the next bird unrevealed after tapping the revealed bird", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root, twoBirdCatalog, loadTestProvenance, noShuffle);
+    renderHomePage(root, twoBirdCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
 
     // Reveal first bird
     root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
@@ -86,9 +148,10 @@ describe("quiz controls", () => {
   it("shows End Quiz and Refresh App buttons before the name is revealed", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle);
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
 
     expect(root.querySelector("[data-action='end-quiz']")).not.toBeNull();
     expect(root.querySelector("[data-action='refresh-app']")).not.toBeNull();
@@ -97,9 +160,10 @@ describe("quiz controls", () => {
   it("shows End Quiz and Refresh App buttons after the name is revealed", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle);
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
     root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
     expect(root.querySelector("[data-action='end-quiz']")).not.toBeNull();
@@ -109,9 +173,10 @@ describe("quiz controls", () => {
   it("returns to the home screen when End Quiz is clicked", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle);
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
     root.querySelector("[data-action='end-quiz']")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
     expect(root.querySelector("h1")?.textContent).toBe("Swiss Birds Quiz");
@@ -125,9 +190,10 @@ describe("Refresh App", () => {
     vi.spyOn(window, "location", "get").mockReturnValue({ ...window.location, reload });
 
     const root = document.createElement("main");
-    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle);
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
 
     root.querySelector("[data-action='refresh-app']")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
@@ -140,9 +206,10 @@ describe("Quiz round restart", () => {
   it("shows birds again after all birds in a round have been seen", async () => {
     const root = document.createElement("main");
 
-    renderHomePage(root, twoBirdCatalog, loadTestProvenance, noShuffle);
+    renderHomePage(root, twoBirdCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
     root.querySelector("button")?.click();
-    await Promise.resolve();
+    await settle();
 
     // Reveal first bird and advance
     root.querySelector(".quiz-card")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
@@ -189,8 +256,26 @@ async function loadTestProvenance() {
   };
 }
 
+function deferred<T>() {
+  let resolve!: (value: T | PromiseLike<T>) => void;
+  let reject!: (reason?: unknown) => void;
+  const promise = new Promise<T>((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+
+  return { promise, resolve, reject };
+}
+
 function noShuffle<T>(arr: T[]): T[] {
   return [...arr];
+}
+
+async function readyWarmAssets() {}
+
+async function settle() {
+  await Promise.resolve();
+  await Promise.resolve();
 }
 
 const twoBirdCatalog = {

@@ -24,6 +24,7 @@ type ImageProvenance = {
 
 type LoadProvenance = (path: string) => Promise<ImageProvenance>;
 type Shuffle = <T>(arr: T[]) => T[];
+type WarmAssets = (catalog: BirdCatalog, loadProvenance: LoadProvenance) => Promise<void>;
 
 function defaultShuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -39,18 +40,57 @@ export function renderHomePage(
   catalog: BirdCatalog = { birds: [] },
   loadProvenance: LoadProvenance = loadImageProvenance,
   shuffle: Shuffle = defaultShuffle,
+  warmAssets: WarmAssets = warmQuizAssets,
 ) {
-  root.innerHTML = `
-    <section class="hero" aria-labelledby="app-title">
-      <p class="eyebrow">Offline bird practice</p>
-      <h1 id="app-title">Swiss Birds Quiz</h1>
-      <button type="button">Start quiz</button>
-    </section>
-  `;
+  let status: "loading" | "ready" | "failed" = "loading";
+  let warmupStarted = false;
 
-  root.querySelector("button")?.addEventListener("click", async () => {
-    await renderQuiz(root, catalog, loadProvenance, shuffle);
-  });
+  function render() {
+    const label = status === "loading" ? "loading..." : status === "failed" ? "Loading failed. Retry" : "Start quiz";
+    const disabled = status === "loading" ? " disabled" : "";
+
+    root.innerHTML = `
+      <section class="hero" aria-labelledby="app-title">
+        <p class="eyebrow">Offline bird practice</p>
+        <h1 id="app-title">Swiss Birds Quiz</h1>
+        <button type="button"${disabled}>${label}</button>
+      </section>
+    `;
+
+    root.querySelector("button")?.addEventListener("click", async () => {
+      if (status === "ready") {
+        await renderQuiz(root, catalog, loadProvenance, shuffle);
+        return;
+      }
+
+      if (status === "failed") {
+        void startWarmup();
+      }
+    });
+  }
+
+  async function startWarmup() {
+    if (warmupStarted) {
+      return;
+    }
+
+    warmupStarted = true;
+    status = "loading";
+    render();
+
+    try {
+      await warmAssets(catalog, loadProvenance);
+      status = "ready";
+    } catch {
+      status = "failed";
+    } finally {
+      warmupStarted = false;
+      render();
+    }
+  }
+
+  render();
+  void startWarmup();
 }
 
 async function renderQuiz(
@@ -153,6 +193,28 @@ async function loadImageProvenance(path: string) {
   }
 
   return response.json() as Promise<ImageProvenance>;
+}
+
+async function warmQuizAssets(catalog: BirdCatalog, loadProvenance: LoadProvenance) {
+  const assets = catalog.birds.flatMap((bird) => {
+    const image = bird.images[0];
+
+    if (!image) {
+      return [];
+    }
+
+    return [preloadImage(image.path), loadProvenance(image.provenancePath).then(() => undefined)];
+  });
+
+  await Promise.all(assets);
+}
+
+async function preloadImage(path: string) {
+  const response = await fetch(assetUrl(path));
+
+  if (!response.ok) {
+    throw new Error(`Could not preload image: ${path}`);
+  }
 }
 
 function assetUrl(path: string) {
