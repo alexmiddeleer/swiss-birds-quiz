@@ -182,6 +182,19 @@ describe("quiz controls", () => {
     expect(root.querySelector("h1")?.textContent).toBe("Swiss Birds Quiz");
     expect(root.querySelector("[data-action='end-quiz']")).toBeNull();
   });
+
+  it("returns to the home screen when End Quiz is activated by touch", async () => {
+    const root = document.createElement("main");
+
+    renderHomePage(root, testCatalog, loadTestProvenance, noShuffle, readyWarmAssets);
+    await settle();
+    root.querySelector("button")?.click();
+    await settle();
+    root.querySelector("[data-action='end-quiz']")?.dispatchEvent(new Event("touchend", { bubbles: true }));
+
+    expect(root.querySelector("h1")?.textContent).toBe("Swiss Birds Quiz");
+    expect(root.querySelector("[data-action='end-quiz']")).toBeNull();
+  });
 });
 
 describe("Refresh App", () => {

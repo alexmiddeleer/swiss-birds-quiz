@@ -57,7 +57,7 @@ export function renderHomePage(
       </section>
     `;
 
-    root.querySelector("button")?.addEventListener("click", async () => {
+    bindButtonPress(root.querySelector("button"), async () => {
       if (status === "ready") {
         await renderQuiz(root, catalog, loadProvenance, shuffle);
         return;
@@ -141,10 +141,10 @@ async function renderQuiz(
         void showNextBird();
       });
     }
-    root.querySelector("[data-action='end-quiz']")?.addEventListener("click", () => {
+    bindButtonPress(root.querySelector("[data-action='end-quiz']"), () => {
       renderHomePage(root, catalog, loadProvenance, shuffle);
     });
-    root.querySelector("[data-action='refresh-app']")?.addEventListener("click", () => {
+    bindButtonPress(root.querySelector("[data-action='refresh-app']"), () => {
       window.location.reload();
     });
   }
@@ -243,3 +243,25 @@ const htmlEscapes: Record<string, string> = {
   ">": "&gt;",
   '"': "&quot;",
 };
+
+function bindButtonPress(element: Element | null, onPress: () => void | Promise<void>) {
+  if (!element) {
+    return;
+  }
+
+  let lastTouchAt = 0;
+
+  element.addEventListener("touchend", (event) => {
+    event.preventDefault();
+    lastTouchAt = Date.now();
+    void onPress();
+  });
+
+  element.addEventListener("click", () => {
+    if (Date.now() - lastTouchAt < 750) {
+      return;
+    }
+
+    void onPress();
+  });
+}
