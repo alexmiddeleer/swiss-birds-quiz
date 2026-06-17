@@ -37,6 +37,18 @@
       ]
     },
     {
+      "scientificName": "Alectoris graeca",
+      "commonName": "Rock partridge",
+      "slug": "alectoris-graeca",
+      "images": [
+        {
+          "id": "commons-3329151-steinhuhn-alectoris-graeca-jpg",
+          "path": "/birds/alectoris-graeca/commons-3329151-steinhuhn-alectoris-graeca-jpg.webp",
+          "provenancePath": "/birds/alectoris-graeca/commons-3329151-steinhuhn-alectoris-graeca-jpg.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Anthus pratensis",
       "commonName": "Meadow pipit",
       "slug": "anthus-pratensis",
@@ -45,6 +57,18 @@
           "id": "commons-85167108-anthus-pratensis-puy-gros-20190805-t193133-jpg",
           "path": "/birds/anthus-pratensis/commons-85167108-anthus-pratensis-puy-gros-20190805-t193133-jpg.webp",
           "provenancePath": "/birds/anthus-pratensis/commons-85167108-anthus-pratensis-puy-gros-20190805-t193133-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Anthus spinoletta",
+      "commonName": "Water pipit",
+      "slug": "anthus-spinoletta",
+      "images": [
+        {
+          "id": "commons-53470352-anthus-spinoletta-water-pipit-kahramanmara-2016-",
+          "path": "/birds/anthus-spinoletta/commons-53470352-anthus-spinoletta-water-pipit-kahramanmara-2016-.webp",
+          "provenancePath": "/birds/anthus-spinoletta/commons-53470352-anthus-spinoletta-water-pipit-kahramanmara-2016-.json"
         }
       ]
     },
@@ -73,6 +97,42 @@
       ]
     },
     {
+      "scientificName": "Apus melba",
+      "commonName": "Alpine swift",
+      "slug": "apus-melba",
+      "images": [
+        {
+          "id": "commons-22145747-tachymarptis-melba-barcelona-spain-flying-8-jpg",
+          "path": "/birds/apus-melba/commons-22145747-tachymarptis-melba-barcelona-spain-flying-8-jpg.webp",
+          "provenancePath": "/birds/apus-melba/commons-22145747-tachymarptis-melba-barcelona-spain-flying-8-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Aquila chrysaetos",
+      "commonName": "Golden eagle",
+      "slug": "aquila-chrysaetos",
+      "images": [
+        {
+          "id": "commons-142133890-015-wild-golden-eagle-in-flight-at-pfyn-finges-s",
+          "path": "/birds/aquila-chrysaetos/commons-142133890-015-wild-golden-eagle-in-flight-at-pfyn-finges-s.webp",
+          "provenancePath": "/birds/aquila-chrysaetos/commons-142133890-015-wild-golden-eagle-in-flight-at-pfyn-finges-s.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Buteo buteo",
+      "commonName": "Common buzzard",
+      "slug": "buteo-buteo",
+      "images": [
+        {
+          "id": "commons-7204229-buteo-swainsoni-calibas-jpg",
+          "path": "/birds/buteo-buteo/commons-7204229-buteo-swainsoni-calibas-jpg.webp",
+          "provenancePath": "/birds/buteo-buteo/commons-7204229-buteo-swainsoni-calibas-jpg.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Carduelis carduelis",
       "commonName": "European goldfinch",
       "slug": "carduelis-carduelis",
@@ -81,6 +141,18 @@
           "id": "commons-31627034-carduelis-carduelis-close-up-jpg",
           "path": "/birds/carduelis-carduelis/commons-31627034-carduelis-carduelis-close-up-jpg.webp",
           "provenancePath": "/birds/carduelis-carduelis/commons-31627034-carduelis-carduelis-close-up-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Carduelis citrinella",
+      "commonName": "Citril finch",
+      "slug": "carduelis-citrinella",
+      "images": [
+        {
+          "id": "commons-24721719-carduelis-citrinella-plateau-de-beille-ariege-mi",
+          "path": "/birds/carduelis-citrinella/commons-24721719-carduelis-citrinella-plateau-de-beille-ariege-mi.webp",
+          "provenancePath": "/birds/carduelis-citrinella/commons-24721719-carduelis-citrinella-plateau-de-beille-ariege-mi.json"
         }
       ]
     },
@@ -117,6 +189,18 @@
           "id": "commons-80952768-chloris-chloris-profile-jpg",
           "path": "/birds/chloris-chloris/commons-80952768-chloris-chloris-profile-jpg.webp",
           "provenancePath": "/birds/chloris-chloris/commons-80952768-chloris-chloris-profile-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Cinclus cinclus",
+      "commonName": "White-throated dipper",
+      "slug": "cinclus-cinclus",
+      "images": [
+        {
+          "id": "commons-55768932-cinclus-cinclus-bronwen-y-dwr-jpg",
+          "path": "/birds/cinclus-cinclus/commons-55768932-cinclus-cinclus-bronwen-y-dwr-jpg.webp",
+          "provenancePath": "/birds/cinclus-cinclus/commons-55768932-cinclus-cinclus-bronwen-y-dwr-jpg.json"
         }
       ]
     },
@@ -253,6 +337,18 @@
       ]
     },
     {
+      "scientificName": "Gyps fulvus",
+      "commonName": "Griffon vulture",
+      "slug": "gyps-fulvus",
+      "images": [
+        {
+          "id": "commons-29066936-gyps-fulvus-in-flight-spain-jpg",
+          "path": "/birds/gyps-fulvus/commons-29066936-gyps-fulvus-in-flight-spain-jpg.webp",
+          "provenancePath": "/birds/gyps-fulvus/commons-29066936-gyps-fulvus-in-flight-spain-jpg.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Hirundo rustica",
       "commonName": "Barn swallow",
       "slug": "hirundo-rustica",
@@ -261,6 +357,18 @@
           "id": "commons-46697315-2013-06-23-08-wesenberg-rauchschwalben-jpg",
           "path": "/birds/hirundo-rustica/commons-46697315-2013-06-23-08-wesenberg-rauchschwalben-jpg.webp",
           "provenancePath": "/birds/hirundo-rustica/commons-46697315-2013-06-23-08-wesenberg-rauchschwalben-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Lagopus muta",
+      "commonName": "Rock ptarmigan",
+      "slug": "lagopus-muta",
+      "images": [
+        {
+          "id": "commons-41916590-lagopus-muta-japonica-mount-tsubakuro-jpg",
+          "path": "/birds/lagopus-muta/commons-41916590-lagopus-muta-japonica-mount-tsubakuro-jpg.webp",
+          "provenancePath": "/birds/lagopus-muta/commons-41916590-lagopus-muta-japonica-mount-tsubakuro-jpg.json"
         }
       ]
     },
@@ -285,6 +393,18 @@
           "id": "commons-5582176-lophophanes-cristatus-luc-viatour-2-jpg",
           "path": "/birds/lophophanes-cristatus/commons-5582176-lophophanes-cristatus-luc-viatour-2-jpg.webp",
           "provenancePath": "/birds/lophophanes-cristatus/commons-5582176-lophophanes-cristatus-luc-viatour-2-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Montifringilla nivalis",
+      "commonName": "White-winged snowfinch",
+      "slug": "montifringilla-nivalis",
+      "images": [
+        {
+          "id": "commons-24830861-montifringilla-nivalis-francer-jpg",
+          "path": "/birds/montifringilla-nivalis/commons-24830861-montifringilla-nivalis-francer-jpg.webp",
+          "provenancePath": "/birds/montifringilla-nivalis/commons-24830861-montifringilla-nivalis-francer-jpg.json"
         }
       ]
     },
@@ -325,6 +445,30 @@
       ]
     },
     {
+      "scientificName": "Nucifraga caryocatactes",
+      "commonName": "Spotted nutcracker",
+      "slug": "nucifraga-caryocatactes",
+      "images": [
+        {
+          "id": "commons-83655997-nucifraga-caryocatactes-davos-1-jpg",
+          "path": "/birds/nucifraga-caryocatactes/commons-83655997-nucifraga-caryocatactes-davos-1-jpg.webp",
+          "provenancePath": "/birds/nucifraga-caryocatactes/commons-83655997-nucifraga-caryocatactes-davos-1-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Oenanthe oenanthe",
+      "commonName": "Northern wheatear",
+      "slug": "oenanthe-oenanthe",
+      "images": [
+        {
+          "id": "commons-147754852-northern-wheatear-2024-04-14-01-jpg",
+          "path": "/birds/oenanthe-oenanthe/commons-147754852-northern-wheatear-2024-04-14-01-jpg.webp",
+          "provenancePath": "/birds/oenanthe-oenanthe/commons-147754852-northern-wheatear-2024-04-14-01-jpg.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Parus major",
       "commonName": "Great tit",
       "slug": "parus-major",
@@ -357,6 +501,18 @@
           "id": "commons-46048774-eurasian-tree-sparrow-at-tenn-ji-park-in-osaka-d",
           "path": "/birds/passer-montanus/commons-46048774-eurasian-tree-sparrow-at-tenn-ji-park-in-osaka-d.webp",
           "provenancePath": "/birds/passer-montanus/commons-46048774-eurasian-tree-sparrow-at-tenn-ji-park-in-osaka-d.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Phoenicurus ochruros",
+      "commonName": "Black redstart",
+      "slug": "phoenicurus-ochruros",
+      "images": [
+        {
+          "id": "commons-79290456-seehof-phoenicurus-ochruros-female-5264746-jpg",
+          "path": "/birds/phoenicurus-ochruros/commons-79290456-seehof-phoenicurus-ochruros-female-5264746-jpg.webp",
+          "provenancePath": "/birds/phoenicurus-ochruros/commons-79290456-seehof-phoenicurus-ochruros-female-5264746-jpg.json"
         }
       ]
     },
@@ -409,6 +565,18 @@
       ]
     },
     {
+      "scientificName": "Prunella collaris",
+      "commonName": "Alpine accentor",
+      "slug": "prunella-collaris",
+      "images": [
+        {
+          "id": "commons-26137734-alpenbraunelle-prunella-collaris-jpg",
+          "path": "/birds/prunella-collaris/commons-26137734-alpenbraunelle-prunella-collaris-jpg.webp",
+          "provenancePath": "/birds/prunella-collaris/commons-26137734-alpenbraunelle-prunella-collaris-jpg.json"
+        }
+      ]
+    },
+    {
       "scientificName": "Prunella modularis",
       "commonName": "Dunnock",
       "slug": "prunella-modularis",
@@ -417,6 +585,18 @@
           "id": "commons-100803904-the-dunnock-prunella-modularis-jpg",
           "path": "/birds/prunella-modularis/commons-100803904-the-dunnock-prunella-modularis-jpg.webp",
           "provenancePath": "/birds/prunella-modularis/commons-100803904-the-dunnock-prunella-modularis-jpg.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Pyrrhocorax graculus",
+      "commonName": "Alpine chough",
+      "slug": "pyrrhocorax-graculus",
+      "images": [
+        {
+          "id": "commons-142133398-013-wild-alpine-chough-in-flight-at-pfyn-finges-",
+          "path": "/birds/pyrrhocorax-graculus/commons-142133398-013-wild-alpine-chough-in-flight-at-pfyn-finges-.webp",
+          "provenancePath": "/birds/pyrrhocorax-graculus/commons-142133398-013-wild-alpine-chough-in-flight-at-pfyn-finges-.json"
         }
       ]
     },
@@ -525,6 +705,30 @@
           "id": "commons-69511119-garden-warbler-sylvia-borin-at-the-unesco-biosph",
           "path": "/birds/sylvia-borin/commons-69511119-garden-warbler-sylvia-borin-at-the-unesco-biosph.webp",
           "provenancePath": "/birds/sylvia-borin/commons-69511119-garden-warbler-sylvia-borin-at-the-unesco-biosph.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Tetrao tetrix",
+      "commonName": "Black grouse",
+      "slug": "tetrao-tetrix",
+      "images": [
+        {
+          "id": "commons-120575536-016-wild-black-grouse-riederalp-switzerland-phot",
+          "path": "/birds/tetrao-tetrix/commons-120575536-016-wild-black-grouse-riederalp-switzerland-phot.webp",
+          "provenancePath": "/birds/tetrao-tetrix/commons-120575536-016-wild-black-grouse-riederalp-switzerland-phot.json"
+        }
+      ]
+    },
+    {
+      "scientificName": "Tichodroma muraria",
+      "commonName": "Wallcreeper",
+      "slug": "tichodroma-muraria",
+      "images": [
+        {
+          "id": "commons-121831949-wallcreeper-tichodroma-muraria-female-piatra-cra",
+          "path": "/birds/tichodroma-muraria/commons-121831949-wallcreeper-tichodroma-muraria-female-piatra-cra.webp",
+          "provenancePath": "/birds/tichodroma-muraria/commons-121831949-wallcreeper-tichodroma-muraria-female-piatra-cra.json"
         }
       ]
     },

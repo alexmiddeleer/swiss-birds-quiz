@@ -1,0 +1,82 @@
+[
+  {
+    "scientificName": "Pyrrhocorax graculus",
+    "commonName": "Alpine chough"
+  },
+  {
+    "scientificName": "Tichodroma muraria",
+    "commonName": "Wallcreeper"
+  },
+  {
+    "scientificName": "Prunella collaris",
+    "commonName": "Alpine accentor"
+  },
+  {
+    "scientificName": "Montifringilla nivalis",
+    "commonName": "White-winged snowfinch"
+  },
+  {
+    "scientificName": "Lagopus muta",
+    "commonName": "Rock ptarmigan"
+  },
+  {
+    "scientificName": "Tetrao tetrix",
+    "commonName": "Black grouse"
+  },
+  {
+    "scientificName": "Alectoris graeca",
+    "commonName": "Rock partridge"
+  },
+  {
+    "scientificName": "Nucifraga caryocatactes",
+    "commonName": "Spotted nutcracker"
+  },
+  {
+    "scientificName": "Corvus corax",
+    "commonName": "Common raven"
+  },
+  {
+    "scientificName": "Buteo buteo",
+    "commonName": "Common buzzard"
+  },
+  {
+    "scientificName": "Aquila chrysaetos",
+    "commonName": "Golden eagle"
+  },
+  {
+    "scientificName": "Gyps fulvus",
+    "commonName": "Griffon vulture"
+  },
+  {
+    "scientificName": "Apus melba",
+    "commonName": "Alpine swift"
+  },
+  {
+    "scientificName": "Phoenicurus ochruros",
+    "commonName": "Black redstart"
+  },
+  {
+    "scientificName": "Oenanthe oenanthe",
+    "commonName": "Northern wheatear"
+  },
+  {
+    "scientificName": "Anthus spinoletta",
+    "commonName": "Water pipit"
+  },
+  {
+    "scientificName": "Motacilla cinerea",
+    "commonName": "Grey wagtail"
+  },
+  {
+    "scientificName": "Cinclus cinclus",
+    "commonName": "White-throated dipper"
+  },
+  {
+    "scientificName": "Carduelis citrinella",
+    "commonName": "Citril finch"
+  },
+  {
+    "scientificName": "Regulus ignicapilla",
+    "commonName": "Firecrest"
+  }
+]
